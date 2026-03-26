@@ -1,0 +1,93 @@
+# wechat_channels.yaml - 微信公众号采集配置
+# 格式:
+#   name: 公众号显示名称
+#   id: 公众号ID (用于搜索)
+#   keywords: 核心搜索关键词列表
+#   dimensions: 适用HR维度 (薪酬激励/组织架构/人才发展/企业文化)
+#   注意: 不含"人事变动"维度，纯人事任免新闻由AI过滤
+
+official_accounts:
+  - name: 涛哥杂谈
+    id: jerryhetalk
+    keywords: [百强房企动态, HR实践, 薪酬对标, 组织变革, 架构调整, 员工福利]
+    dimensions: [薪酬激励, 组织架构, 人才发展, 企业文化]
+
+  - name: 涛哥谈地产
+    id: dichanzp001
+    keywords: [百强房企动态, HR实践, 薪酬对标, 组织变革, 架构调整, 员工福利]
+    dimensions: [薪酬激励, 组织架构, 人才发展, 企业文化]
+
+  - name: 地产一品塘
+    id: dichanyipintang
+    keywords: [地产HR对标, 薪酬激励, 人才管理, 政策解读, 用工合规]
+    dimensions: [薪酬激励, 人才发展, 组织架构, 企业文化]
+
+  - name: 大厂日爆
+    id: buxiangshangban__
+    keywords: [互联网大厂HR, 薪酬激励, 组织架构, 人才趋势, 员工福利, 弹性办公]
+    dimensions: [薪酬激励, 组织架构, 人才发展, 企业文化]
+
+  - name: 互联网坊间八卦
+    id: kekesil
+    keywords: [互联网HR案例, 人才发展, 薪酬策略, 组织优化, 员工关系]
+    dimensions: [人才发展, 薪酬激励, 组织架构, 企业文化]
+
+  - name: 一勺言
+    id: yishaoyan2014
+    keywords: [地产战略, 组织管控, 薪酬设计, 人才战略]
+    dimensions: [组织架构, 薪酬激励, 人才发展]
+
+  - name: 赛普咨询
+    id: saipu12345
+    keywords: [房地产组织能力, 薪酬激励, 人效提升, 流程优化]
+    dimensions: [组织架构, 薪酬激励, 人才发展]
+
+  - name: 明源地产研究院
+    id: mydcyjy
+    keywords: [地产数字化HR, 组织变革, 人才发展, 薪酬对标]
+    dimensions: [组织架构, 薪酬激励, 人才发展]
+
+  - name: HR赋能工坊
+    id: HR-empowerment
+    keywords: [HR三支柱, 绩效管理, 人才培养, AI+HR, 员工体验]
+    dimensions: [人才发展, 组织架构, 薪酬激励, 企业文化]
+
+  - name: 战略流程革新
+    id: zhanlueliuchenggexin
+    keywords: [战略解码, 流程优化, 组织管控, HR流程, 组织架构]
+    dimensions: [组织架构, 薪酬激励, 人才发展]
+
+  - name: 刘欣-卓越经营
+    id: yunying-pub
+    keywords: [企业运营, 组织管控, 薪酬激励, 人才战略]
+    dimensions: [组织架构, 薪酬激励, 人才发展]
+
+  - name: 巨潮资讯（官方）
+    id: cninfo_news
+    keywords: [上市公司公告, 薪酬披露, 股权激励, 组织架构]
+    dimensions: [薪酬激励, 组织架构, 人才发展]
+
+  - name: 地产人力V圈
+    id: dichanhrquan
+    keywords: [地产HR干货, 薪酬对标, 人才招聘, 组织优化, 员工福利]
+    dimensions: [薪酬激励, 人才发展, 组织架构, 企业文化]
+
+  - name: 地产周侃
+    id: fangqihrck
+    keywords: [房企HR案例, 薪酬体系, 人才发展, 合规管理, 员工关系]
+    dimensions: [薪酬激励, 人才发展, 组织架构, 企业文化]
+
+  - name: HR研究网
+    id: HRresearch
+    keywords: [HR行业报告, 薪酬调研, 人才发展, 组织变革, 员工体验]
+    dimensions: [薪酬激励, 人才发展, 组织架构, 企业文化]
+
+  - name: 地产人才官
+    id: dichanrencai
+    keywords: [地产人才管理, 薪酬激励, 人才招聘, 组织效能]
+    dimensions: [人才发展, 薪酬激励, 组织架构]
+
+  - name: 薪飞扬
+    id: Tophire100
+    keywords: [薪酬对标, 薪酬数据, 职级薪酬, 校招薪酬, 薪酬调研]
+    dimensions: [薪酬激励, 人才发展]

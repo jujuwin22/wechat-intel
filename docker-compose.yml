@@ -1,0 +1,20 @@
+services:
+  wechat-exporter:
+    build:
+      context: ./docker/wechat-exporter
+      dockerfile: Dockerfile
+    container_name: wechat-collector
+    ports:
+      - "3000:3000"
+    environment:
+      - NUXT_HOST=0.0.0.0
+      - NUXT_PORT=3000
+      # 使用文件系统存储（持久化登录状态）
+      - NITRO_KV_DRIVER=fs
+      - NITRO_KV_BASE=/app/data/kv
+      # 开启调试模式
+      - NUXT_DEBUG_MP_REQUEST=true
+    volumes:
+      # 持久化 cookie 数据
+      - ./docker/wechat-exporter/data:/app/data
+    restart: unless-stopped

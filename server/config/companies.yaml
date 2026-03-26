@@ -1,0 +1,215 @@
+# companies.yaml - 公司名单（用于公众号粗筛公司名匹配 + 去重归一化）
+
+business_lines:
+  - id: real_estate_core
+    name: 通用基础房企
+    companies:
+      - name: 碧桂园
+        aliases: [碧桂园集团, 碧桂园控股, Country Garden]
+        stock_code: "02007.HK"
+      - name: 保利发展
+        aliases: [保利地产, 保利置业, 保利]
+        stock_code: "600048.SH"
+      - name: 万科
+        aliases: [万科地产, 万科企业, Vanke]
+        stock_code: "000002.SZ"
+      - name: 华润置地
+        aliases: [华润地产, 华润, CR Land]
+        stock_code: "01109.HK"
+      - name: 中海地产
+        aliases: [中海外, 中海, 中国海外发展, COLI]
+        stock_code: "00688.HK"
+      - name: 招商蛇口
+        aliases: [招商地产, 招商, CMSK]
+        stock_code: "001979.SZ"
+      - name: 绿城中国
+        aliases: [绿城, Greentown]
+        stock_code: "03900.HK"
+      - name: 建发集团
+        aliases: [建发, 建发房产, C&D]
+      - name: 融创中国
+        aliases: [融创, Sunac]
+        stock_code: "01918.HK"
+      - name: 中国金茂
+        aliases: [金茂, 金茂地产, Jinmao]
+        stock_code: "00817.HK"
+      - name: 滨江集团
+        aliases: [滨江, 滨江房产]
+        stock_code: "002244.SZ"
+      - name: 绿地控股
+        aliases: [绿地, 绿地集团, Greenland]
+        stock_code: "600606.SH"
+      - name: 中国铁建
+        aliases: [铁建, 铁建地产, CRCC]
+        stock_code: "601186.SH"
+      - name: 越秀地产
+        aliases: [越秀, 越秀房产]
+        stock_code: "00123.HK"
+      - name: 华发股份
+        aliases: [华发, 华发地产]
+        stock_code: "600325.SH"
+      - name: 深业集团
+        aliases: [深业, 深业地产]
+      - name: 电建地产
+        aliases: [电建, 中国电建地产]
+      - name: 中交房地产
+        aliases: [中交地产, 中交]
+        stock_code: "000736.SZ"
+      - name: 金地集团
+        aliases: [金地, 金地地产, Gemdale]
+        stock_code: "600383.SH"
+      - name: 保利置业
+        aliases: [保利置业集团]
+        stock_code: "00119.HK"
+
+  - id: commercial_operation
+    name: 商业运营
+    companies:
+      - name: 华润万象生活
+        aliases: [万象生活, 万象城]
+        stock_code: "01209.HK"
+      - name: 万达商管
+        aliases: [万达, 万达广场]
+      - name: 吾悦商管
+        aliases: [吾悦, 吾悦广场]
+      - name: 招商商管
+        aliases: []
+      - name: 世纪金源
+        aliases: [金源]
+      - name: 红星美凯龙
+        aliases: [红星, 美凯龙]
+        stock_code: "601828.SH"
+      - name: 新城控股
+        aliases: [新城, 新城发展]
+        stock_code: "601155.SH"
+      - name: 大悦城集团
+        aliases: [大悦城, 中粮大悦城]
+        stock_code: "000031.SZ"
+      - name: 凯德
+        aliases: [凯德集团, CapitaLand]
+      - name: 太古
+        aliases: [太古地产, Swire]
+        stock_code: "01972.HK"
+      - name: 印力
+        aliases: [印力集团]
+      - name: 恒隆地产
+        aliases: [恒隆, Hang Lung]
+        stock_code: "00101.HK"
+      - name: 保利商旅
+        aliases: []
+      - name: 新鸿基地产
+        aliases: [新鸿基, SHK]
+        stock_code: "00016.HK"
+
+  - id: long_rental
+    name: 长租公寓
+    companies:
+      - name: 魔方
+        aliases: [魔方公寓, 魔方生活]
+      - name: 泊寓
+        aliases: [万科泊寓]
+      - name: 领寓
+        aliases: [龙湖领寓, 龙湖冠寓]
+      - name: 自如
+        aliases: [自如公寓, Ziroom]
+      - name: 乐乎
+        aliases: [乐乎公寓]
+      - name: 方隅
+        aliases: [方隅公寓]
+      - name: 朗诗寓
+        aliases: [朗诗公寓]
+      - name: 华润有巢
+        aliases: [有巢, 有巢公寓]
+      - name: 城家
+        aliases: [城家公寓]
+      - name: 安居乐寓
+        aliases: []
+      - name: 保利公寓
+        aliases: []
+
+  - id: property_service
+    name: 物业服务
+    companies:
+      - name: 万物云
+        aliases: [万科物业, 万物梁行]
+        stock_code: "02602.HK"
+      - name: 碧桂园服务
+        aliases: [碧桂园物业]
+        stock_code: "06098.HK"
+      - name: 保利物业
+        aliases: [保利物业服务]
+        stock_code: "06049.HK"
+      - name: 中海物业
+        aliases: []
+        stock_code: "02669.HK"
+      - name: 招商积余
+        aliases: [招商物业]
+        stock_code: "001914.SZ"
+      - name: 绿城服务
+        aliases: [绿城物业]
+        stock_code: "02869.HK"
+      - name: 金科智慧服务
+        aliases: [金科服务, 金科物业]
+        stock_code: "09666.HK"
+      - name: 远洋服务
+        aliases: [远洋物业]
+        stock_code: "06677.HK"
+      - name: 越秀服务
+        aliases: [越秀物业]
+        stock_code: "06626.HK"
+
+  - id: real_estate_brokerage
+    name: 房地产经纪
+    companies:
+      - name: 贝壳
+        aliases: [贝壳找房, 链家, KE Holdings]
+        stock_code: "BEKE"
+      - name: 中原地产
+        aliases: [中原, Centaline]
+      - name: 我爱我家
+        aliases: [5i5j]
+        stock_code: "000560.SZ"
+      - name: 麦田
+        aliases: [麦田房产]
+      - name: 德佑
+        aliases: []
+
+  - id: internet_tech
+    name: 互联网科技
+    companies:
+      - name: 美团
+        aliases: [美团点评, Meituan]
+        stock_code: "03690.HK"
+      - name: 拼多多
+        aliases: [PDD, Pinduoduo]
+        stock_code: "PDD"
+      - name: 京东
+        aliases: [京东集团, JD]
+        stock_code: "JD"
+      - name: 阿里巴巴
+        aliases: [阿里, 淘宝, Alibaba]
+        stock_code: "BABA"
+      - name: 字节跳动
+        aliases: [字节, 抖音, TikTok, 飞书]
+      - name: 腾讯
+        aliases: [腾讯控股, 腾讯科技, Tencent]
+        stock_code: "00700.HK"
+      - name: 蚂蚁集团
+        aliases: [蚂蚁金服, 蚂蚁, Ant Group]
+      - name: 快手
+        aliases: [快手科技, Kuaishou]
+        stock_code: "01024.HK"
+      - name: 华为
+        aliases: [华为技术, Huawei]
+      - name: 百度
+        aliases: [百度集团, Baidu]
+        stock_code: "BIDU"
+      - name: 理想汽车
+        aliases: [理想, Li Auto]
+        stock_code: "LI"
+      - name: 微软
+        aliases: [微软中国, Microsoft]
+        stock_code: "MSFT"
+      - name: 美的
+        aliases: [美的集团, Midea]
+        stock_code: "000333.SZ"

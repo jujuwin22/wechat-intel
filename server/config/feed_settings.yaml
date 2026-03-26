@@ -1,0 +1,50 @@
+# feed_settings.yaml - Feed管道配置
+
+# 事件拆分
+split:
+  multi_event_indicators:
+    min_companies_in_title: 3
+    title_contains_semicolon: true
+  cache_dir: "data/cache/split"
+
+# 去重
+dedup:
+  date_window_days: 3
+  llm_merge_threshold: "high"  # 只有confidence=high才合并
+
+# 评分权重
+scoring:
+  weights:
+    confidence: 0.4
+    completeness: 0.3
+    credibility: 0.3
+  account_credibility:
+    巨潮资讯（官方）: 5
+    明源地产研究院: 4
+    赛普咨询: 4
+    涛哥杂谈: 3
+    涛哥谈地产: 3
+    地产一品塘: 3
+    地产人才官: 3
+    地产周侃: 3
+    薪飞扬: 3
+    一勺言: 3
+    大厂日爆: 2
+    互联网坊间八卦: 2
+    default: 2
+
+# 输出
+output:
+  format: ["markdown", "html"]
+  output_dir: "data/output"
+  max_events: 50
+
+# LLM (复用 .env 中的 LLM_API_KEY / LLM_BASE_URL / LLM_MODEL)
+llm:
+  temperature: 0.1
+
+# Web
+web:
+  host: "0.0.0.0"
+  port: 5002
+  debug: true

@@ -1,0 +1,60 @@
+# 数据来源可信度配置
+# 评分标准: 5=最高可信度, 1=最低可信度
+
+source_credibility:
+  # 交易所公告 - 最高可信度 (官方披露)
+  exchanges: 5
+
+  # 官方财报/年报/半年报 - 高可信度
+  tech_official: 4
+  realestate_official: 4
+
+  # 政府监管文件 - 高可信度
+  gov_regulation: 4
+
+  # 权威财经媒体 - 中等可信度
+  financial_media: 3
+  financial_platforms: 3
+
+  # 研究报告 - 中等可信度
+  research_cn: 3
+  research_intl: 3
+  stats: 3
+
+  # 微信公众号 - 较低可信度(需交叉验证)
+  wechat: 2
+
+  # 默认/其他来源 - 最低可信度
+  default: 1
+
+# 域名可信度覆盖 (特定域名的可信度评分)
+domain_overrides:
+  # 交易所官方域名
+  "sse.com.cn": 5          # 上海证券交易所
+  "szse.cn": 5             # 深圳证券交易所
+  "hkexnews.hk": 5         # 香港交易所披露易
+
+  # 权威财经媒体
+  "stcn.com": 3            # 证券时报
+  "cs.com.cn": 3           # 中国证券报
+  "xinhuanet.com": 3       # 新华网
+  "people.com.cn": 3       # 人民网
+  "cls.cn": 3              # 财联社
+  "jiemian.com": 3         # 界面新闻
+  "21jingji.com": 3        # 21世纪经济报道
+  "cbnweek.com": 3         # 第一财经
+  "hexun.com": 3           # 和讯网
+  "sina.com.cn": 3         # 新浪财经
+  "sohu.com": 2            # 搜狐财经(较低)
+  "163.com": 2             # 网易财经(较低)
+
+  # 行业研究/咨询
+  "moodys.com": 3          # 穆迪
+  "spglobal.com": 3        # 标普
+  "fitchratings.com": 3    # 惠誉
+
+  # 政府/监管
+  "gov.cn": 4              # 政府网站
+  "pbc.gov.cn": 4          # 央行
+  "cbirc.gov.cn": 4        # 银保监会
+  "csrc.gov.cn": 4         # 证监会
