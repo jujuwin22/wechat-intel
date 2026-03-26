@@ -8,7 +8,7 @@ import json
 import glob
 import threading
 import subprocess
-import queue
+import time
 from datetime import datetime
 from flask import Flask, jsonify, request, Response, send_from_directory
 from flask_cors import CORS
@@ -27,7 +27,7 @@ CORS(app)
 # ─── 全局状态 ─────────────────────────────────────────────────
 
 _collect_running = False
-_collect_log_queue = queue.Queue()
+_collect_done = False
 _collect_log_lines = []
 
 
@@ -45,7 +45,7 @@ def collect_status():
 @app.route('/api/collect/run', methods=['POST'])
 def collect_run():
     """启动采集任务"""
-    global _collect_running, _collect_log_lines
+    global _collect_running, _collect_log_lines, _collect_done
 
     if _collect_running:
         return jsonify({'status': 'error', 'message': '采集正在运行中，请勿重复启动'}), 409
@@ -56,15 +56,12 @@ def collect_run():
 
     # 清空旧日志
     _collect_log_lines = []
-    while not _collect_log_queue.empty():
-        try:
-            _collect_log_queue.get_nowait()
-        except queue.Empty:
-            break
+    _collect_done = False
 
     def _run_collect():
-        global _collect_running
+        global _collect_running, _collect_done
         _collect_running = True
+        _collect_done = False
 
         try:
             cmd = [sys.executable, '-m', 'server.collector.collector']
@@ -98,6 +95,7 @@ def collect_run():
             _log(f"✗ 采集异常: {e}")
         finally:
             _collect_running = False
+            _collect_done = True
             _log("[DONE]")
 
     thread = threading.Thread(target=_run_collect, daemon=True)
@@ -107,36 +105,36 @@ def collect_run():
 
 
 def _log(line: str):
-    """写入日志行（同时存储和推送到SSE）"""
+    """写入日志行"""
     ts = datetime.now().strftime('%H:%M:%S')
     entry = f"[{ts}] {line}"
     _collect_log_lines.append(entry)
-    _collect_log_queue.put(entry)
 
 
 @app.route('/api/collect/log')
 def collect_log_sse():
-    """SSE 日志流"""
+    """SSE 日志流 — 基于列表轮询，支持多客户端、快速结束场景"""
     def generate():
-        # 先推送已有日志
-        for line in list(_collect_log_lines):
-            yield f"data: {json.dumps({'line': line}, ensure_ascii=False)}\n\n"
-
-        # 持续监听新日志
-        sent_count = len(_collect_log_lines)
+        cursor = 0
         while True:
-            try:
-                line = _collect_log_queue.get(timeout=30)
-                yield f"data: {json.dumps({'line': line}, ensure_ascii=False)}\n\n"
-                if '[DONE]' in line:
-                    yield f"data: {json.dumps({'done': True}, ensure_ascii=False)}\n\n"
-                    break
-            except queue.Empty:
-                # 心跳
-                yield f": keepalive\n\n"
-                if not _collect_running:
-                    yield f"data: {json.dumps({'done': True}, ensure_ascii=False)}\n\n"
-                    break
+            # 推送新增日志
+            current_lines = _collect_log_lines
+            if cursor < len(current_lines):
+                for line in current_lines[cursor:]:
+                    yield f"data: {json.dumps({'line': line}, ensure_ascii=False)}\n\n"
+                cursor = len(current_lines)
+
+            # 任务已完成且所有日志已推送
+            if _collect_done and cursor >= len(_collect_log_lines):
+                yield f"data: {json.dumps({'done': True}, ensure_ascii=False)}\n\n"
+                break
+
+            # 未完成则短暂等待后继续轮询
+            if not _collect_done:
+                time.sleep(0.3)
+            else:
+                # done 但可能还有尾部日志
+                time.sleep(0.1)
 
     return Response(generate(), mimetype='text/event-stream',
                     headers={'Cache-Control': 'no-cache', 'X-Accel-Buffering': 'no'})
