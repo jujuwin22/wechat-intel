@@ -99,7 +99,7 @@ https://raw.githubusercontent.com/jujuwin22/wechat-intel/main/data/output/{文�
 - 万达 → 万达商管
 - 华润 → 华润置地
 
-## 三种工作模式
+## 两种工作模式
 
 ### 模式一：情报查询
 
@@ -128,15 +128,6 @@ https://raw.githubusercontent.com/jujuwin22/wechat-intel/main/data/output/{文�
 - 每条趋势至少关联 2 个事件
 - 按重要性排序
 - 用 2-3 句话写执行摘要
-
-### 模式三：跨月对比
-
-用户要求"对比 2月和 3月"时：
-
-1. 读取两个月的 `digest.json`
-2. 对比：总事件数、覆盖公司数、各维度分布变化
-3. 分析：新增/持续/消失的主题和公司
-4. 给出洞察和建议
 
 ## 输出格式
 
