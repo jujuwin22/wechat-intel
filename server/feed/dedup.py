@@ -139,7 +139,53 @@ def rule_based_grouping(events: List[Event], alias_map: Dict[str, str],
         if len(current_group) > 1:
             candidate_groups.append(current_group)
 
+    # 补充：同公司+维度+日期窗口内，summary 词汇重叠度高的事件对也加入候选组
+    # 解决跨采集批次增量合并后 LLM 拆分出的语义重复事件漏网问题
+    for key, indices in buckets.items():
+        if len(indices) < 2:
+            continue
+        # 已在 candidate_groups 里的组，收集其中的 index pairs 避免重复添加
+        already_grouped = set()
+        for g in candidate_groups:
+            for idx in g:
+                already_grouped.add(idx)
+
+        sorted_indices = sorted(indices, key=lambda i: events[i].event_date or "")
+        for i in range(len(sorted_indices)):
+            for j in range(i + 1, len(sorted_indices)):
+                a, b = sorted_indices[i], sorted_indices[j]
+                if a in already_grouped and b in already_grouped:
+                    continue
+                if not _dates_within_window(events[a].event_date, events[b].event_date, date_window):
+                    continue
+                overlap = _summary_overlap(events[a].summary, events[b].summary)
+                # 同公司名出现在两条summary中时，阈值更宽松（0.3）
+                company_name = key[0]
+                both_mention = (company_name and
+                                company_name in (events[a].summary or '') and
+                                company_name in (events[b].summary or ''))
+                threshold = 0.3 if both_mention else 0.4
+                if overlap >= threshold:
+                    candidate_groups.append([a, b])
+                    already_grouped.add(a)
+                    already_grouped.add(b)
+
     return candidate_groups
+
+
+def _summary_overlap(s1: str, s2: str) -> float:
+    """计算两个 summary 的中文 bigram 单向包含度（短句 bigram 有多少比例出现在长句里）"""
+    if not s1 or not s2:
+        return 0.0
+    import re
+    def bigrams(s):
+        cn = re.sub(r'[^\u4e00-\u9fff]', '', s)
+        return set(cn[i:i+2] for i in range(len(cn) - 1))
+    b1, b2 = bigrams(s1), bigrams(s2)
+    if not b1 or not b2:
+        return 0.0
+    shorter, longer = (b2, b1) if len(b2) < len(b1) else (b1, b2)
+    return len(shorter & longer) / len(shorter)
 
 
 # ─── Phase 2: LLM语义精判 ────────────────────────────────────

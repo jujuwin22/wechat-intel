@@ -4,6 +4,7 @@ feed/renderer.py - 输出生成
 """
 import os
 import json
+import html as html_mod
 from datetime import datetime
 from typing import List, Dict
 from collections import defaultdict
@@ -69,6 +70,12 @@ def render_markdown(entries: List[DigestEntry], output_dir: str,
             # 详情
             if ev.detail:
                 f.write(f"\n{ev.detail}\n")
+
+            # 原文摘录
+            if ev.excerpts:
+                f.write("\n> **原文摘录：**\n")
+                for excerpt in ev.excerpts:
+                    f.write(f"> {excerpt}\n>\n")
 
             # 原文链接
             if entry.all_urls:
@@ -168,6 +175,7 @@ def render_html(entries: List[DigestEntry], output_dir: str,
     dim_colors = {
         "薪酬激励": "#e74c3c",
         "组织架构": "#3498db",
+        "人事变动": "#9b59b6",
         "人才发展": "#2ecc71",
         "企业文化": "#f59e0b",
         "未分类": "#95a5a6",
@@ -204,21 +212,31 @@ def render_html(entries: List[DigestEntry], output_dir: str,
                 link_parts.append(f'<a href="{url}" target="_blank">来源{i}</a>')
             links = " | ".join(link_parts)
 
+        safe_summary = html_mod.escape(ev.summary or '')
+        safe_detail = html_mod.escape(ev.detail or '')
+        safe_company = html_mod.escape(ev.company or '')
+        safe_account = html_mod.escape(ev.source_account or '')
+        safe_excerpts = ''.join(
+            f'<blockquote class="excerpt">{html_mod.escape(exc)}</blockquote>'
+            for exc in (ev.excerpts or [])
+        )
+
         card = f'''
-        <div class="event-card" data-dimension="{ev.dimension}">
+        <div class="event-card" data-dimension="{html_mod.escape(ev.dimension or '')}">
           <div class="event-header">
             <span class="event-idx">{idx}</span>
-            <span class="dimension-tag" style="background:{color}">{ev.dimension}</span>
+            <span class="dimension-tag" style="background:{color}">{html_mod.escape(ev.dimension or '')}</span>
             <span class="confidence">置信度 {ev.confidence}%</span>
             {source_info}
           </div>
-          <h3 class="event-title">{ev.summary}</h3>
+          <h3 class="event-title">{safe_summary}</h3>
           <div class="event-meta">
             <span>📅 {event_date}</span>
-            {f'<span>🏢 {ev.company}</span>' if ev.company else ''}
-            <span>📰 {ev.source_account}</span>
+            {f'<span>🏢 {safe_company}</span>' if ev.company else ''}
+            <span>📰 {safe_account}</span>
           </div>
-          {f'<p class="event-detail">{ev.detail}</p>' if ev.detail else ''}
+          {f'<p class="event-detail">{safe_detail}</p>' if ev.detail else ''}
+          {safe_excerpts}
           <div class="event-links">{links}</div>
         </div>'''
         cards_html.append(card)
@@ -251,6 +269,7 @@ def render_html(entries: List[DigestEntry], output_dir: str,
   .event-meta {{ display: flex; gap: 16px; color: #7f8c8d; font-size: 0.85em; margin-bottom: 8px; flex-wrap: wrap; }}
   .event-detail {{ color: #555; font-size: 0.9em; margin-bottom: 8px; }}
   .event-links {{ font-size: 0.85em; }}
+  .excerpt {{ background: #f8f9fa; border-left: 3px solid #3498db; padding: 8px 12px; margin: 4px 0; font-size: 0.85em; color: #555; line-height: 1.5; }}
   .event-links a {{ color: #3498db; text-decoration: none; }}
   .event-links a:hover {{ text-decoration: underline; }}
   .hidden {{ display: none; }}
@@ -267,6 +286,7 @@ def render_html(entries: List[DigestEntry], output_dir: str,
     <button class="filter-btn active" onclick="filterAll()">全部</button>
     <button class="filter-btn" onclick="filterDim('薪酬激励')">薪酬激励</button>
     <button class="filter-btn" onclick="filterDim('组织架构')">组织架构</button>
+    <button class="filter-btn" onclick="filterDim('人事变动')">人事变动</button>
     <button class="filter-btn" onclick="filterDim('人才发展')">人才发展</button>
     <button class="filter-btn" onclick="filterDim('企业文化')">企业文化</button>
   </div>

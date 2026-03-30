@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
 微信公众号文章采集脚本
-基于 wechat-article-exporter API
+基于 wewe-rss JSON Feed API
 
 使用流程:
-1. 先启动 docker-compose up -d
-2. 访问 http://localhost:3000 扫码登录
-3. 运行此脚本: python collector.py
+1. 确保 wewe-rss 服务已启动 (http://localhost:4000)
+2. 在 wewe-rss 中订阅目标公众号
+3. 运行此脚本: python -m server.collector.collector
 """
 
 import requests
@@ -14,10 +14,11 @@ import json
 import time
 import os
 import re
+import random
 import yaml
 from datetime import datetime
+from html.parser import HTMLParser
 from typing import List, Dict, Optional, Tuple
-from urllib.parse import urlencode
 
 # 尝试导入 anthropic SDK
 try:
@@ -31,6 +32,30 @@ except ImportError:
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
+class _HTMLTextExtractor(HTMLParser):
+    """从 HTML 中提取纯文本"""
+    def __init__(self):
+        super().__init__()
+        self._result = []
+    def handle_data(self, data):
+        self._result.append(data)
+    def get_text(self):
+        return ''.join(self._result).strip()
+
+
+def html_to_text(html: str) -> str:
+    """将 HTML 转为纯文本"""
+    if not html:
+        return ""
+    extractor = _HTMLTextExtractor()
+    try:
+        extractor.feed(html)
+        return extractor.get_text()
+    except Exception:
+        # 降级：简单正则去标签
+        return re.sub(r'<[^>]+>', '', html).strip()
+
+
 class WechatCollector:
     def __init__(self, config=None):
         """
@@ -42,17 +67,11 @@ class WechatCollector:
             config = _cfg
         self.config = config
 
-        self.base_url = config.BASE_URL
+        self.wewe_rss_url = config.WEWE_RSS_URL
         self.session = requests.Session()
         self.session.headers.update({
-            "Content-Type": "application/json",
             "Accept": "application/json"
         })
-
-        # 设置登录凭证 (从浏览器获取的 auth-key)
-        self.auth_key = os.environ.get("WECHAT_AUTH_KEY", "")
-        if self.auth_key:
-            self.session.cookies.set("auth-key", self.auth_key)
 
         # 确保导出目录存在
         os.makedirs(config.EXPORT_DIR, exist_ok=True)
@@ -88,16 +107,16 @@ class WechatCollector:
         if not wm:
             return False  # 首次采集，不跳过
 
-        url = article.get("link", "")
-        create_time = article.get("create_time", 0)
+        url = article.get("url", "")
 
         # 检查 URL 是否在已采集列表中
         if url and url in wm.get("last_collected_urls", []):
             return True
 
-        # 检查 create_time 是否早于水位线
-        last_time = wm.get("last_collected_time", 0)
-        if last_time and isinstance(create_time, (int, float)) and create_time <= last_time:
+        # 检查 date_modified 是否早于水位线
+        last_date = wm.get("last_collected_date", "")
+        article_date = article.get("date_modified", "")
+        if last_date and article_date and article_date <= last_date:
             return True
 
         return False
@@ -107,9 +126,8 @@ class WechatCollector:
         if not articles:
             return
 
-        urls = [a.get("link", "") for a in articles if a.get("link")]
-        create_times = [a.get("create_time", 0) for a in articles
-                        if isinstance(a.get("create_time", 0), (int, float))]
+        urls = [a.get("url", "") for a in articles if a.get("url")]
+        dates = [a.get("date_modified", "") for a in articles if a.get("date_modified")]
 
         self.watermark.setdefault("accounts", {})
         existing = self.watermark["accounts"].get(account_name, {})
@@ -119,7 +137,7 @@ class WechatCollector:
         all_urls = list(set(existing_urls + urls))[-100:]
 
         self.watermark["accounts"][account_name] = {
-            "last_collected_time": max(create_times) if create_times else existing.get("last_collected_time", 0),
+            "last_collected_date": max(dates) if dates else existing.get("last_collected_date", ""),
             "last_collected_urls": all_urls,
             "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
@@ -142,200 +160,204 @@ class WechatCollector:
         return names
 
     def check_company_mention(self, title: str, content: str) -> bool:
-        """检查标题或正文是否提到目标公司"""
-        text = (title or '') + (content or '')
+        """检查标题或正文是否提到目标公司（标题含排除词直接跳过）"""
+        title = title or ''
+        # 标题含排除词 → 直接跳过（不管是否含公司名）
+        if title and any(kw in title for kw in self.config.EXCLUDE_KEYWORDS):
+            return False
+        text = title + (content or '')
         return any(name in text for name in self.company_names)
 
-    def check_login_status(self) -> bool:
-        """检查登录状态"""
+    def check_service_status(self) -> bool:
+        """检查 wewe-rss 服务是否可达"""
         try:
-            # 通过搜索接口验证登录状态
-            test_response = self.session.get(
-                f"{self.base_url}/api/web/mp/searchbiz",
-                params={"keyword": "test", "begin": 0, "size": 1},
+            response = self.session.get(
+                f"{self.wewe_rss_url}/feeds",
                 timeout=10
             )
-            test_data = test_response.json()
-
-            # 如果 ret == 0 表示 API 调用成功（无论是否有结果）
-            if test_data.get("base_resp", {}).get("ret") == 0:
-                print("✓ 已登录，API 可正常调用")
+            if response.status_code == 200:
+                feeds = response.json()
+                print(f"✓ wewe-rss 服务正常，已订阅 {len(feeds)} 个公众号")
                 return True
             else:
-                err_msg = test_data.get("base_resp", {}).get("err_msg", "未知错误")
-                print(f"✗ 未登录或登录已过期: {err_msg}")
+                print(f"✗ wewe-rss 返回异常状态码: {response.status_code}")
                 return False
         except Exception as e:
-            print(f"✗ 检查登录状态失败: {e}")
+            print(f"✗ wewe-rss 服务不可达: {e}")
             return False
 
-    def search_account(self, name: str, account_id: str = "") -> Optional[Dict]:
-        """搜索公众号，优先用名称搜索并验证匹配"""
+    def fetch_feeds(self) -> List[Dict]:
+        """获取 wewe-rss 所有订阅源列表"""
         try:
-            # 优先用公众号名称搜索
-            for keyword in [name, account_id] if account_id else [name]:
-                url = f"{self.base_url}/api/web/mp/searchbiz"
-                params = {"keyword": keyword, "begin": 0, "size": 5}
-
-                response = self.session.get(url, params=params)
-                data = response.json()
-
-                if "base_resp" in data and data["base_resp"].get("ret") != 0:
-                    continue
-
-                list_data = data.get("list", [])
-                if not list_data:
-                    continue
-
-                # 验证：检查返回结果的nickname是否包含目标名称
-                for item in list_data:
-                    nickname = item.get("nickname", "")
-                    if name in nickname or nickname in name:
-                        return item
-
-                # 如果用名称搜索且第一个结果没匹配，打印警告继续尝试ID
-                if keyword == name:
-                    candidates = [item.get("nickname", "?") for item in list_data[:3]]
-                    print(f"  ⚠ 用名称'{name}'搜索未精确匹配，候选: {candidates}，尝试用ID搜索...")
-
-            print(f"  ✗ 未找到公众号: {name} (ID: {account_id})")
-            return None
-
+            response = self.session.get(f"{self.wewe_rss_url}/feeds", timeout=10)
+            if response.status_code == 200:
+                return response.json()
+            return []
         except Exception as e:
-            print(f"  ✗ 搜索异常: {e}")
-            return None
-
-    def get_articles(self, fakeid: str, keyword: str = "", begin: int = 0, count: int = 10) -> List[Dict]:
-        """获取公众号文章列表"""
-        try:
-            url = f"{self.base_url}/api/web/mp/appmsgpublish"
-            params = {
-                "id": fakeid,
-                "keyword": keyword,
-                "begin": begin,
-                "size": count
-            }
-
-            response = self.session.get(url, params=params)
-            data = response.json()
-
-            # 检查错误
-            if "base_resp" in data and data["base_resp"].get("ret") != 0:
-                print(f"  ✗ 获取文章失败: {data['base_resp'].get('err_msg', 'Unknown error')}")
-                return []
-
-            # 解析文章列表
-            articles = []
-
-            # publish_page 是 JSON 字符串，需要先解析
-            publish_page_str = data.get("publish_page", "")
-            if publish_page_str:
-                try:
-                    publish_page = json.loads(publish_page_str)
-                    publish_list = publish_page.get("publish_list", [])
-                except json.JSONDecodeError:
-                    publish_list = []
-            else:
-                publish_list = []
-
-            for item in publish_list:
-                publish_info_str = item.get("publish_info", "")
-                if not publish_info_str:
-                    continue
-
-                try:
-                    publish_info = json.loads(publish_info_str)
-                except json.JSONDecodeError:
-                    continue
-
-                # 获取文章信息 (从 appmsgex 字段)
-                app_msg_ex = publish_info.get("appmsgex", [])
-                if not app_msg_ex:
-                    continue
-
-                for msg in app_msg_ex:
-                    article = {
-                        "title": msg.get("title", ""),
-                        "digest": msg.get("digest", ""),  # 摘要
-                        "link": msg.get("link", ""),
-                        "cover": msg.get("cover", ""),
-                        "create_time": msg.get("create_time", ""),
-                        "update_time": msg.get("update_time", ""),
-                        "author": msg.get("author_name", ""),
-                        "fakeid": fakeid,
-                        "content": "",  # 稍后获取正文
-                    }
-                    articles.append(article)
-
-            return articles
-
-        except Exception as e:
-            print(f"  ✗ 获取文章异常: {e}")
+            print(f"  ✗ 获取订阅源列表失败: {e}")
             return []
 
-    def get_article_content(self, link: str) -> str:
-        """获取文章正文内容（使用 download API，支持全文获取）"""
-        try:
-            url = f"{self.base_url}/api/public/v1/download"
-            params = {"url": link, "format": "text"}
-            response = self.session.get(url, params=params, timeout=30)
-            if response.status_code == 200 and response.text:
-                return response.text.strip()
-            return ""
-        except Exception as e:
-            print(f"    ✗ 获取正文失败: {e}")
-            return ""
+    def match_feeds_to_channels(self, feeds: List[Dict]) -> List[Dict]:
+        """将 wewe-rss 订阅源与 yaml 配置的公众号匹配
 
-    def match_keywords(self, content: str, keywords: List[str]) -> Tuple[bool, List[str]]:
+        Returns:
+            list of dict: [{channel: yaml_config, feed: wewe_feed}, ...]
         """
-        检查内容是否匹配关键词（或关系）
-        返回: (是否匹配, 匹配到的关键词列表)
-        """
-        if not content or not keywords:
-            return False, []
-
-        content_lower = content.lower()
         matched = []
+        feed_map = {f['name']: f for f in feeds}
 
-        for keyword in keywords:
-            if keyword.lower() in content_lower:
-                matched.append(keyword)
+        for channel in self.config.OFFICIAL_ACCOUNTS:
+            ch_name = channel['name']
+            feed_id = channel.get('feed_id', '')
 
-        return len(matched) > 0, matched
+            # 优先用 feed_id 精确匹配
+            if feed_id:
+                feed = next((f for f in feeds if f['id'] == feed_id), None)
+                if feed:
+                    matched.append({'channel': channel, 'feed': feed})
+                    continue
+
+            # 名称精确匹配
+            if ch_name in feed_map:
+                matched.append({'channel': channel, 'feed': feed_map[ch_name]})
+                continue
+
+            # 模糊匹配：名称互相包含
+            found = False
+            for feed in feeds:
+                fname = feed['name']
+                if ch_name in fname or fname in ch_name:
+                    matched.append({'channel': channel, 'feed': feed})
+                    found = True
+                    break
+
+            if not found:
+                print(f"  ⚠ 未在 wewe-rss 中找到: {ch_name}")
+
+        return matched
+
+    def fetch_feed_articles(self, feed_id: str, limit: int = 100) -> List[Dict]:
+        """从 wewe-rss 获取文章列表（轻量模式，不含全文）
+
+        使用 mode=default 参数，响应仅包含标题/URL/时间，~47KB/100篇。
+        全文通过 fetch_article_content 按需逐篇拉取。
+
+        Returns:
+            list of dict: [{id, title, url, date_modified, ...}]  (content_html 为空)
+        """
+        all_items = []
+        seen_urls = set()
+        page = 1
+        page_size = 50  # 轻量模式下每页可拉更多
+
+        while len(all_items) < limit:
+            try:
+                url = f"{self.wewe_rss_url}/feeds/{feed_id}.json"
+                params = {"limit": page_size, "page": page, "mode": "default"}
+                response = self.session.get(url, params=params, timeout=15)
+                if response.status_code != 200:
+                    print(f"  ✗ 获取文章失败: HTTP {response.status_code}")
+                    break
+                data = response.json()
+                items = data.get("items", [])
+                if not items:
+                    break
+                new_count = 0
+                for item in items:
+                    item_url = item.get("url", "")
+                    if item_url not in seen_urls:
+                        seen_urls.add(item_url)
+                        all_items.append(item)
+                        new_count += 1
+                if new_count == 0 or len(items) < page_size:
+                    break
+                page += 1
+            except Exception as e:
+                print(f"  ✗ 获取文章异常 (page {page}): {e}")
+                break
+
+        return all_items[:limit]
+
+    def _batch_fetch_content(self, feed_id: str, target_urls: set) -> Dict[str, str]:
+        """分页拉取 fulltext，提取目标 URL 的纯文本正文
+
+        wewe-rss 无法按单篇 URL 查询，因此分页拉取 fulltext 模式
+        （每页3篇，~9MB），在内存中匹配目标 URL。
+
+        Args:
+            feed_id: 公众号 feed ID
+            target_urls: 需要全文的文章 URL 集合
+
+        Returns:
+            dict: {url: plain_text_content}
+        """
+        content_map = {}
+        remaining = set(target_urls)
+        page = 1
+        page_size = 3  # fulltext 模式每页少量，避免超时
+        miss_streak = 0  # 连续无新发现的页数
+        max_miss = 5  # 连续5页无新发现则停止
+
+        while remaining:
+            try:
+                url = f"{self.wewe_rss_url}/feeds/{feed_id}.json"
+                params = {"limit": page_size, "page": page, "mode": "fulltext"}
+                response = self.session.get(url, params=params, timeout=60)
+                if response.status_code != 200:
+                    print(f"    ✗ 拉取全文失败: HTTP {response.status_code}")
+                    break
+                data = response.json()
+                items = data.get("items", [])
+                if not items:
+                    break
+
+                found_in_page = 0
+                for item in items:
+                    item_url = item.get("url", "")
+                    if item_url in remaining:
+                        content_map[item_url] = html_to_text(item.get("content_html", ""))
+                        remaining.discard(item_url)
+                        found_in_page += 1
+
+                fetched = len(content_map)
+                total = len(target_urls)
+                print(f"    全文进度: {fetched}/{total} (page {page})")
+
+                if found_in_page > 0:
+                    miss_streak = 0
+                else:
+                    miss_streak += 1
+                    if miss_streak >= max_miss:
+                        print(f"    ⚠ 连续{max_miss}页无新发现，停止翻页（{len(remaining)}篇未获取）")
+                        break
+
+                if len(items) < page_size:
+                    break  # 没有更多文章了
+                page += 1
+            except Exception as e:
+                print(f"    ✗ 拉取全文异常 (page {page}): {e}")
+                break
+
+        return content_map
 
     def is_in_date_range(self, article: Dict) -> bool:
-        """
-        检查文章是否在配置的日期范围内
-        返回: True 如果在范围内或没有配置日期范围
-        """
+        """检查文章是否在配置的日期范围内（基于 date_modified ISO 格式）"""
         config = self.config
-        # 如果没有配置日期范围，返回True
         if not config.FILTER_DATE_START and not config.FILTER_DATE_END:
             return True
 
-        # 获取文章创建时间
-        create_time = article.get("create_time", "")
-        if not create_time:
-            return True  # 没有时间信息，默认包含
+        date_str = article.get("date_modified", "")
+        if not date_str:
+            return True
 
         try:
-            # 时间戳转换
-            if isinstance(create_time, (int, float)):
-                article_date = datetime.fromtimestamp(create_time)
-            else:
-                return True
+            # wewe-rss 返回 ISO 格式: "2026-03-26T13:11:29.000Z"
+            article_date = date_str[:10]  # 取 YYYY-MM-DD 部分
 
-            # 检查日期范围
-            if config.FILTER_DATE_START:
-                start_date = datetime.strptime(config.FILTER_DATE_START, "%Y-%m-%d")
-                if article_date < start_date:
-                    return False
-
-            if config.FILTER_DATE_END:
-                end_date = datetime.strptime(config.FILTER_DATE_END, "%Y-%m-%d")
-                end_date = end_date.replace(hour=23, minute=59, second=59)
-                if article_date > end_date:
-                    return False
+            if config.FILTER_DATE_START and article_date < config.FILTER_DATE_START:
+                return False
+            if config.FILTER_DATE_END and article_date > config.FILTER_DATE_END:
+                return False
 
             return True
         except Exception:
@@ -351,21 +373,18 @@ class WechatCollector:
             return None
 
         try:
-            # 准备维度标准描述
+            # 准备维度标准描述（始终使用全量4维度，避免遗漏）
+            all_dimensions = list(config.DIMENSION_CRITERIA.keys())
             dimension_criteria = []
-            for dim in dimensions:
-                if dim in config.DIMENSION_CRITERIA:
-                    dimension_criteria.append(f"- {dim}: {config.DIMENSION_CRITERIA[dim]}")
+            for dim in all_dimensions:
+                dimension_criteria.append(f"- {dim}: {config.DIMENSION_CRITERIA[dim]}")
 
             # 截断正文（避免过长）
-            content = article.get("content", "")[:3000]
+            content = article.get("content", "")[:5000]
 
-            # 获取发布日期
-            pub_ts = article.get('create_time', '')
-            if pub_ts and str(pub_ts).isdigit():
-                published_at = datetime.fromtimestamp(int(pub_ts)).strftime('%Y-%m-%d')
-            else:
-                published_at = str(pub_ts) if pub_ts else '未知'
+            # 获取发布日期（wewe-rss 用 ISO 格式 date_modified）
+            date_mod = article.get('date_modified', '')
+            published_at = date_mod[:10] if date_mod else '未知'
 
             # 构建 prompt
             prompt = config.AI_FILTER_PROMPT.format(
@@ -373,7 +392,7 @@ class WechatCollector:
                 digest=article.get("digest", ""),
                 content=content,
                 published_at=published_at,
-                dimensions=", ".join(dimensions),
+                dimensions=", ".join(all_dimensions),
                 dimension_criteria="\n".join(dimension_criteria)
             )
 
@@ -386,6 +405,7 @@ class WechatCollector:
             # 解析JSON响应
             try:
                 result = self.extract_json_from_response(response)
+                result = self._validate_ai_result(result)
                 return result
             except Exception as e:
                 print(f"    ✗ AI响应解析失败: {e}")
@@ -395,14 +415,58 @@ class WechatCollector:
             print(f"    ✗ AI精筛异常: {e}")
             return None
 
-    def call_ai_api(self, prompt: str) -> Optional[str]:
-        """调用 AI API (根据配置选择 DeepSeek 或 Claude)"""
+    def _validate_ai_result(self, result: Optional[Dict]) -> Optional[Dict]:
+        """校验AI精筛结果的格式和值范围"""
+        if not result or not isinstance(result, dict):
+            return None
+
+        # is_relevant 必须是 bool
+        if 'is_relevant' not in result:
+            return None
+        if not isinstance(result['is_relevant'], bool):
+            result['is_relevant'] = str(result['is_relevant']).lower() == 'true'
+
+        # confidence_score 归一化到 0-100
+        score = result.get('confidence_score', 0)
+        if not isinstance(score, (int, float)):
+            try:
+                score = int(score)
+            except (ValueError, TypeError):
+                score = 0
+        result['confidence_score'] = max(0, min(100, int(score)))
+
+        # dimension 必须是合法值或 null
+        valid_dims = set(self.config.DIMENSION_CRITERIA.keys())
+        dim = result.get('dimension')
+        if dim and dim not in valid_dims:
+            result['dimension'] = None
+
+        # summary 非空检查
+        if result.get('is_relevant') and not result.get('summary'):
+            result['is_relevant'] = False
+
+        return result
+
+    def call_ai_api(self, prompt: str, max_retries: int = 2) -> Optional[str]:
+        """调用 AI API (根据配置选择 DeepSeek 或 Claude)，带重试"""
         provider = getattr(self.config, "AI_PROVIDER", "deepseek").lower()
 
-        if provider == "deepseek":
-            return self.call_deepseek_api(prompt)
-        else:
-            return self.call_claude_api(prompt)
+        for attempt in range(max_retries + 1):
+            if provider == "deepseek":
+                result = self.call_deepseek_api(prompt)
+            else:
+                result = self.call_claude_api(prompt)
+
+            if result is not None:
+                return result
+
+            if attempt < max_retries:
+                wait = 2 * (attempt + 1)
+                print(f"    ⏳ AI调用失败，{wait}s后重试 ({attempt + 1}/{max_retries})...")
+                import time
+                time.sleep(wait)
+
+        return None
 
     def call_deepseek_api(self, prompt: str) -> Optional[str]:
         """调用 DeepSeek API (兼容 OpenAI 格式)"""
@@ -424,7 +488,8 @@ class WechatCollector:
                     {"role": "system", "content": "你是一个专业的HR行业分析师，擅长判断文章内容是否属于HR专业领域。请严格按照用户要求返回JSON格式。"},
                     {"role": "user", "content": prompt}
                 ],
-                "max_tokens": 1000
+                "max_tokens": 1000,
+                "temperature": 0
             }
 
             response = requests.post(
@@ -560,15 +625,11 @@ class WechatCollector:
         unified_articles = []
         for a in articles:
             ai = a.get('ai_result', {})
-            # published_at：Unix 时间戳转为可读日期字符串
-            pub_ts = a.get('create_time', '')
-            if pub_ts and str(pub_ts).isdigit():
-                pub_at = datetime.fromtimestamp(int(pub_ts)).strftime('%Y-%m-%d')
-            else:
-                pub_at = str(pub_ts)
+            date_mod = a.get('date_modified', '')
+            pub_at = date_mod[:10] if date_mod else ''
             unified_articles.append({
                 'title': a.get('title', ''),
-                'url': a.get('link', ''),
+                'url': a.get('url', ''),
                 'content': a.get('content', ''),
                 'event_date': self.parse_event_date(ai.get('event_date', '')),
                 'dimension': ai.get('dimension'),
@@ -580,6 +641,26 @@ class WechatCollector:
                 'published_at': pub_at,
                 'local_path': None,
             })
+
+        # 增量合并：若已有同月同公众号的 JSON，先读取旧文章，以 URL 去重后合并
+        old_articles = []
+        if os.path.exists(filename):
+            try:
+                with open(filename, "r", encoding="utf-8") as f:
+                    old_data = json.load(f)
+                old_articles = old_data.get("articles", [])
+            except Exception as ex:
+                print(f"  ⚠ 读取旧文件失败，将全量覆盖: {ex}")
+
+        if old_articles:
+            existing_urls = {a.get("url") for a in unified_articles if a.get("url")}
+            added = 0
+            for old_a in old_articles:
+                if old_a.get("url") not in existing_urls:
+                    unified_articles.append(old_a)
+                    added += 1
+            if added:
+                print(f"  增量合并: 保留旧文章 {added} 篇，合并后共 {len(unified_articles)} 篇")
 
         data = {
             "source": "wechat",
@@ -598,29 +679,35 @@ class WechatCollector:
         return filename
 
     def save_to_markdown(self, account_name: str, articles: List[Dict], date_str: str):
-        """保存为统一格式 Markdown"""
+        """保存为统一格式 Markdown（从对应JSON读取全量文章，保持与JSON一致）"""
         config = self.config
         filename = f"{config.EXPORT_DIR}/{date_str}_{account_name}_wechat.md"
+        json_filename = f"{config.EXPORT_DIR}/{date_str}_{account_name}_wechat.json"
+
+        # 从JSON文件读取完整文章列表（JSON已做增量合并，以其为准）
+        all_articles = articles
+        if os.path.exists(json_filename):
+            try:
+                with open(json_filename, "r", encoding="utf-8") as f:
+                    json_data = json.load(f)
+                all_articles = json_data.get("articles", articles)
+            except Exception:
+                pass
 
         with open(filename, "w", encoding="utf-8") as f:
             f.write(f"# {account_name} - HR 情报采集\n\n")
-            f.write(f"- 来源: wechat\n")
+            f.write(f"- 来源: wechat (wewe-rss)\n")
             f.write(f"- 公众号: {account_name}\n")
             f.write(f"- 采集日期: {date_str}\n")
-            f.write(f"- 共 {len(articles)} 条\n\n---\n\n")
+            f.write(f"- 共 {len(all_articles)} 条\n\n---\n\n")
 
-            for idx, article in enumerate(articles, 1):
+            for idx, article in enumerate(all_articles, 1):
                 f.write(f"## {idx}. {article['title']}\n\n")
-                f.write(f"- **作者**: {article.get('author', '')}\n")
 
-                # 发布时间
-                pub_ts = article.get('create_time', '')
-                if pub_ts and str(pub_ts).isdigit():
-                    pub_str = datetime.fromtimestamp(int(pub_ts)).strftime('%Y-%m-%d')
-                else:
-                    pub_str = str(pub_ts)
+                # 发布时间（优先 published_at，fallback date_modified）
+                pub_str = (article.get('published_at') or article.get('date_modified') or '')[:10]
                 f.write(f"- **发布时间**: {pub_str}\n")
-                f.write(f"- **链接**: {article.get('link', '')}\n")
+                f.write(f"- **链接**: {article.get('url', '')}\n")
 
                 if article.get("matched_keywords"):
                     f.write(f"- **匹配关键词**: {', '.join(article['matched_keywords'])}\n")
@@ -652,111 +739,109 @@ class WechatCollector:
         print(f"  ✓ Markdown 已保存: {filename}")
         return filename
 
-    def collect_account(self, account_info: Tuple, date_str: str) -> Dict:
-        """采集单个公众号"""
+    def collect_account(self, channel: Dict, feed: Dict, date_str: str) -> Dict:
+        """采集单个公众号（两阶段：轻量列表 → 逐篇拉全文）"""
         config = self.config
-        name, account_id, keywords, dimensions = account_info
+        name = channel['name']
+        dimensions = channel.get('dimensions', [])
+        feed_id = feed['id']
+        feed_name = feed['name']
 
         print(f"\n{'='*60}")
-        print(f"开始采集: {name}")
-        print(f"关键词: {', '.join(keywords)}")
+        print(f"开始采集: {name} (wewe-rss: {feed_name})")
+        print(f"feed_id: {feed_id}")
         print(f"{'='*60}")
 
         result = {
             "name": name,
-            "account_id": account_id,
+            "feed_id": feed_id,
             "total_checked": 0,
             "matched": [],
             "errors": []
         }
 
-        # 1. 搜索公众号获取 fakeid
-        print(f"[1/3] 搜索公众号...")
-        search_result = self.search_account(name, account_id)
-        if not search_result:
-            result["errors"].append("搜索公众号失败")
+        # ── 阶段1: 轻量列表（mode=default, ~47KB/100篇）──────
+        print(f"[1/5] 获取文章列表（轻量模式）...")
+        raw_articles = self.fetch_feed_articles(feed_id, config.MAX_ARTICLES_PER_ACCOUNT)
+        if not raw_articles:
+            print(f"  ⚠ 无文章数据")
+            result["errors"].append("无文章数据")
             return result
 
-        fakeid = search_result.get("fakeid")
-        print(f"  ✓ 找到公众号: {search_result.get('nickname', name)} (fakeid: {fakeid[:20]}...)")
+        print(f"  ✓ 共获取 {len(raw_articles)} 篇文章（轻量）")
+        result["total_checked"] = len(raw_articles)
 
-        # 2. 获取文章列表
-        print(f"[2/3] 获取文章列表...")
-        all_articles = []
-        begin = 0
-
-        while len(all_articles) < config.MAX_ARTICLES_PER_ACCOUNT:
-            articles = self.get_articles(fakeid, "", begin, config.BATCH_SIZE)
-            if not articles:
-                break
-
-            all_articles.extend(articles)
-            print(f"  已获取 {len(all_articles)} 篇文章...")
-
-            begin += config.BATCH_SIZE
-            time.sleep(config.REQUEST_DELAY)
-
-        print(f"  ✓ 共获取 {len(all_articles)} 篇文章")
-        result["total_checked"] = len(all_articles)
-
-        # 2.5 水位线去重
-        before_watermark = len(all_articles)
-        all_articles = [a for a in all_articles if not self._is_article_collected(name, a)]
-        skipped = before_watermark - len(all_articles)
+        # 1.5 水位线去重
+        before_wm = len(raw_articles)
+        raw_articles = [a for a in raw_articles if not self._is_article_collected(name, a)]
+        skipped = before_wm - len(raw_articles)
         if skipped > 0:
-            print(f"  ✓ 水位线去重: 跳过 {skipped} 篇已采集文章，剩余 {len(all_articles)} 篇")
+            print(f"  ✓ 水位线去重: 跳过 {skipped} 篇已采集，剩余 {len(raw_articles)} 篇")
 
-        # 3. 日期过滤
+        # 2. 日期过滤
         if config.FILTER_DATE_START or config.FILTER_DATE_END:
-            print(f"[3/5] 日期过滤 ({config.FILTER_DATE_START or '不限'} 至 {config.FILTER_DATE_END or '不限'})...")
-            date_filtered_articles = []
-            for article in all_articles:
-                if self.is_in_date_range(article):
-                    date_filtered_articles.append(article)
-            print(f"  ✓ 日期过滤后: {len(date_filtered_articles)} 篇文章")
-            all_articles = date_filtered_articles
+            print(f"[2/5] 日期过滤 ({config.FILTER_DATE_START or '不限'} ~ {config.FILTER_DATE_END or '不限'})...")
+            raw_articles = [a for a in raw_articles if self.is_in_date_range(a)]
+            print(f"  ✓ 日期过滤后: {len(raw_articles)} 篇")
 
-        # 4. 公司名粗筛
-        print(f"[4/5] 公司名粗筛...")
-        company_matched_articles = []
+        if not raw_articles:
+            print(f"  - 无文章需要处理")
+            return result
 
-        for idx, article in enumerate(all_articles, 1):
-            title = article['title'][:40]
-            print(f"  粗筛第 {idx}/{len(all_articles)} 篇: {title}...", end=" ")
+        # 3. 标题粗筛（不需要正文，毫秒级）
+        print(f"[3/5] 标题粗筛 ({len(raw_articles)} 篇)...")
+        title_matched = []
+        title_unmatched = []
 
-            title_match = self.check_company_mention(article['title'], '')
-            content = self.get_article_content(article['link'])
-            article['content'] = content
-            content_match = self.check_company_mention('', content)
-
-            if title_match or content_match:
+        for article in raw_articles:
+            if self.check_company_mention(article.get('title', ''), ''):
                 article['dimensions'] = dimensions
-                company_matched_articles.append(article)
-                if title_match and content_match:
-                    print("✓ 标题+正文含公司名")
-                elif title_match:
-                    print("✓ 标题含公司名")
-                else:
-                    print("✓ 正文含公司名")
+                title_matched.append(article)
             else:
-                print("✗")
+                title_unmatched.append(article)
 
-            time.sleep(config.REQUEST_DELAY)
+        print(f"  ✓ 标题命中: {len(title_matched)} 篇, 未命中: {len(title_unmatched)} 篇")
 
-        print(f"  ✓ 公司名粗筛: {len(company_matched_articles)} 篇命中")
+        # ── 阶段2: 逐篇拉全文（仅对需要的文章）──────────────
+        # 标题命中的 → 直接拉全文给 AI 精筛
+        # 标题未命中的 → 拉全文做正文粗筛
+        need_content_urls = set()
+        for a in title_matched:
+            need_content_urls.add(a.get('url', ''))
+        for a in title_unmatched:
+            need_content_urls.add(a.get('url', ''))
+
+        print(f"[4/5] 拉取全文 ({len(need_content_urls)} 篇)...")
+        content_map = self._batch_fetch_content(feed_id, need_content_urls)
+        print(f"  ✓ 成功获取 {sum(1 for v in content_map.values() if v)} 篇全文")
+
+        # 给所有文章填充正文
+        for a in title_matched + title_unmatched:
+            url = a.get('url', '')
+            a['content'] = content_map.get(url, '')
+            a['digest'] = a['content'][:200] if a['content'] else ''
+
+        # 标题未命中的做正文二次粗筛
+        content_matched = []
+        for article in title_unmatched:
+            if article.get('content') and self.check_company_mention('', article['content']):
+                article['dimensions'] = dimensions
+                content_matched.append(article)
+
+        if content_matched:
+            print(f"  ✓ 正文补充命中: {len(content_matched)} 篇")
+
+        company_matched = title_matched + content_matched
+        print(f"  ✓ 公司名粗筛合计: {len(company_matched)} 篇")
 
         # 5. AI精筛
         matched_articles = []
-        articles_for_ai = company_matched_articles
 
-        if config.ENABLE_AI_FILTER and articles_for_ai:
-            print(f"[5/6] AI精筛 ({len(articles_for_ai)}篇文章)...")
+        if config.ENABLE_AI_FILTER and company_matched:
+            print(f"[5/5] AI精筛 ({len(company_matched)} 篇)...")
 
-            for idx, article in enumerate(articles_for_ai, 1):
-                print(f"  AI精筛第 {idx}/{len(articles_for_ai)} 篇: {article['title'][:40]}...", end=" ")
-
-                if not article.get('content'):
-                    article['content'] = self.get_article_content(article['link'])
+            for idx, article in enumerate(company_matched, 1):
+                print(f"  AI精筛 {idx}/{len(company_matched)}: {article.get('title','')[:40]}...", end=" ")
 
                 ai_result = self.ai_filter_article(article, dimensions)
 
@@ -764,57 +849,56 @@ class WechatCollector:
                     is_relevant = ai_result.get("is_relevant", False)
                     confidence = ai_result.get("confidence_score", 0)
 
-                    confidence_threshold = config.AI_CONFIDENCE_THRESHOLD
-                    if is_relevant and confidence >= confidence_threshold:
+                    if is_relevant and confidence >= config.AI_CONFIDENCE_THRESHOLD:
                         article['ai_result'] = ai_result
                         matched_articles.append(article)
-                        print(f"✓ 通过 ({ai_result.get('dimension', 'Unknown')}, 置信度{confidence})")
+                        print(f"✓ ({ai_result.get('dimension', '?')}, {confidence}%)")
                     else:
                         reason = ai_result.get("reason", "未匹配")[:30]
-                        print(f"✗ 拒绝 ({reason}...)")
+                        print(f"✗ ({reason})")
                 else:
-                    matched_articles.append(article)
-                    print("⚠️ AI失败，保留粗筛结果")
+                    print("✗ AI失败，丢弃")
 
-                time.sleep(2)
+                time.sleep(1)
         else:
-            matched_articles = company_matched_articles
+            matched_articles = company_matched
 
-        # 6. 事件日期后置过滤
-        if config.FILTER_DATE_START or config.FILTER_DATE_END:
-            print(f"[6/6] 事件日期过滤 ({config.FILTER_DATE_START or '不限'} 至 {config.FILTER_DATE_END or '不限'})...")
-            date_filtered_articles = []
-            for article in matched_articles:
-                ai_result = article.get('ai_result', {})
-                event_date_str = ai_result.get('event_date', '')
+        # 5.5 抽检：粗筛未命中的文章随机抽样走AI精筛
+        coarse_unmatched = [a for a in title_unmatched if a not in content_matched]
+        spot_check_count = max(1, int(len(coarse_unmatched) * config.SPOT_CHECK_RATIO))
+        spot_check_count = min(spot_check_count, len(coarse_unmatched))
 
-                event_date = self.parse_event_date(event_date_str)
-                if not event_date:
-                    pub_ts = article.get('create_time', '')
-                    if pub_ts and str(pub_ts).isdigit():
-                        event_date = datetime.fromtimestamp(int(pub_ts)).strftime('%Y-%m-%d')
+        if config.ENABLE_AI_FILTER and coarse_unmatched and spot_check_count > 0:
+            spot_sample = random.sample(coarse_unmatched, spot_check_count)
+            print(f"  [抽检] 粗筛未命中 {len(coarse_unmatched)} 篇，抽检 {spot_check_count} 篇...")
+            spot_hits = 0
+
+            for idx, article in enumerate(spot_sample, 1):
+                print(f"    抽检 {idx}/{spot_check_count}: {article.get('title','')[:40]}...", end=" ")
+                ai_result = self.ai_filter_article(article, dimensions)
+
+                if ai_result:
+                    is_relevant = ai_result.get("is_relevant", False)
+                    confidence = ai_result.get("confidence_score", 0)
+
+                    if is_relevant and confidence >= config.AI_CONFIDENCE_THRESHOLD:
+                        article['ai_result'] = ai_result
+                        article['dimensions'] = dimensions
+                        article['spot_check'] = True
+                        matched_articles.append(article)
+                        spot_hits += 1
+                        print(f"✓ 捞回 ({ai_result.get('dimension', '?')}, {confidence}%)")
                     else:
-                        date_filtered_articles.append(article)
-                        continue
-
-                in_range = True
-                if config.FILTER_DATE_START:
-                    if event_date < config.FILTER_DATE_START:
-                        in_range = False
-                        print(f"    ✗ 事件日期 {event_date} 早于搜索范围")
-                if config.FILTER_DATE_END:
-                    if event_date > config.FILTER_DATE_END:
-                        in_range = False
-                        print(f"    ✗ 事件日期 {event_date} 晚于搜索范围")
-
-                if in_range:
-                    date_filtered_articles.append(article)
+                        print(f"✗")
                 else:
-                    if ai_result:
-                        ai_result['event_date'] = event_date
+                    print("✗ AI失败")
 
-            matched_articles = date_filtered_articles
-            print(f"  ✓ 事件日期过滤后: {len(matched_articles)} 篇文章")
+                time.sleep(1)
+
+            miss_rate = spot_hits / spot_check_count * 100 if spot_check_count > 0 else 0
+            print(f"  [抽检结果] 抽检 {spot_check_count} 篇，捞回 {spot_hits} 篇，漏判率估计 {miss_rate:.0f}%")
+            if miss_rate > 30:
+                print(f"  ⚠ 漏判率较高 ({miss_rate:.0f}%)，建议检查粗筛规则")
 
         result["matched"] = matched_articles
 
@@ -825,9 +909,9 @@ class WechatCollector:
         else:
             print(f"  - 无匹配文章，跳过保存")
 
-        # 更新水位线
-        if all_articles:
-            self._update_watermark(name, all_articles)
+        # 更新水位线（对所有拉取的文章列表，非只是匹配的）
+        if raw_articles:
+            self._update_watermark(name, raw_articles)
             print(f"  ✓ 水位线已更新: {name}")
 
         return result
@@ -836,18 +920,30 @@ class WechatCollector:
         """运行采集任务"""
         config = self.config
         print("\n" + "="*60)
-        print("微信公众号文章采集工具")
+        print("微信公众号文章采集工具 (wewe-rss)")
         print("="*60)
 
-        # 检查登录状态
-        print("\n[检查登录状态]")
-        if not self.check_login_status():
+        # 检查 wewe-rss 服务
+        print("\n[检查 wewe-rss 服务]")
+        if not self.check_service_status():
             print("\n⚠️ 请先完成以下步骤:")
-            print("1. 确保 Docker 服务已启动: docker-compose up -d")
-            print("2. 访问 http://localhost:3000")
-            print("3. 使用微信扫码登录")
-            print("4. 重新运行此脚本")
+            print(f"1. 确保 wewe-rss 服务已启动: {self.wewe_rss_url}")
+            print("2. 在 wewe-rss 中订阅目标公众号")
+            print("3. 重新运行此脚本")
             return
+
+        # 获取订阅源并匹配
+        print("\n[匹配订阅源]")
+        feeds = self.fetch_feeds()
+        matched_pairs = self.match_feeds_to_channels(feeds)
+
+        if not matched_pairs:
+            print("✗ 没有匹配到任何公众号，请检查 wewe-rss 订阅和 wechat_channels.yaml 配置")
+            return
+
+        print(f"  ✓ 匹配到 {len(matched_pairs)} 个公众号")
+        for pair in matched_pairs:
+            print(f"    {pair['channel']['name']} → {pair['feed']['name']} ({pair['feed']['id'][:20]}...)")
 
         # 文件名前缀：用搜索区间而非执行日期
         if config.FILTER_DATE_START:
@@ -855,22 +951,22 @@ class WechatCollector:
             date_str = f"{parts[0]}年{int(parts[1])}月"
         else:
             date_str = datetime.now().strftime("%Y-%m-%d")
+
         print(f"\n搜索区间: {date_str}")
-        print(f"目标公众号: {len(config.OFFICIAL_ACCOUNTS)} 个")
+        print(f"目标公众号: {len(matched_pairs)} 个")
         print(f"导出目录: {config.EXPORT_DIR}")
 
         # 采集所有公众号
         all_results = []
 
-        for account_info in config.OFFICIAL_ACCOUNTS:
+        for pair in matched_pairs:
             try:
-                result = self.collect_account(account_info, date_str)
+                result = self.collect_account(pair['channel'], pair['feed'], date_str)
                 all_results.append(result)
-                time.sleep(2)
             except Exception as e:
                 print(f"\n  ✗ 采集异常: {e}")
                 all_results.append({
-                    "name": account_info[0],
+                    "name": pair['channel']['name'],
                     "error": str(e)
                 })
 
@@ -883,7 +979,7 @@ class WechatCollector:
         total_matched = sum(len(r.get("matched", [])) for r in all_results)
 
         print(f"\n总计检查文章: {total_checked} 篇")
-        print(f"匹配关键词文章: {total_matched} 篇")
+        print(f"匹配文章: {total_matched} 篇")
         print(f"\n各公众号详情:")
 
         for result in all_results:

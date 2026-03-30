@@ -1,20 +1,23 @@
-services:
-  wechat-exporter:
-    build:
-      context: ./docker/wechat-exporter
-      dockerfile: Dockerfile
-    container_name: wechat-collector
-    ports:
-      - "3000:3000"
-    environment:
-      - NUXT_HOST=0.0.0.0
-      - NUXT_PORT=3000
-      # 使用文件系统存储（持久化登录状态）
-      - NITRO_KV_DRIVER=fs
-      - NITRO_KV_BASE=/app/data/kv
-      # 开启调试模式
-      - NUXT_DEBUG_MP_REQUEST=true
-    volumes:
-      # 持久化 cookie 数据
-      - ./docker/wechat-exporter/data:/app/data
-    restart: unless-stopped
+# wewe-rss 服务需独立部署，详见 https://github.com/cooderl/wewe-rss
+# 默认运行在 http://localhost:4000
+# 可通过 .env 中 WEWE_RSS_URL 修改地址
+
+services: {}
+
+  # [已废弃] wechat-article-exporter 服务
+  # wechat-exporter:
+  #   build:
+  #     context: ./docker/wechat-exporter
+  #     dockerfile: Dockerfile
+  #   container_name: wechat-collector
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NUXT_HOST=0.0.0.0
+  #     - NUXT_PORT=3000
+  #     - NITRO_KV_DRIVER=fs
+  #     - NITRO_KV_BASE=/app/data/kv
+  #     - NUXT_DEBUG_MP_REQUEST=true
+  #   volumes:
+  #     - ./docker/wechat-exporter/data:/app/data
+  #   restart: unless-stopped

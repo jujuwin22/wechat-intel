@@ -61,6 +61,12 @@ business_lines:
       - name: 保利置业
         aliases: [保利置业集团]
         stock_code: "00119.HK"
+      - name: 龙湖集团
+        aliases: [龙湖, 龙湖地产, Longfor]
+        stock_code: "00960.HK"
+      - name: 旭辉集团
+        aliases: [旭辉, 旭辉控股, CIFI]
+        stock_code: "00884.HK"
 
   - id: commercial_operation
     name: 商业运营
@@ -207,9 +213,29 @@ business_lines:
       - name: 理想汽车
         aliases: [理想, Li Auto]
         stock_code: "LI"
+      - name: 小红书
+        aliases: [RED, RedNote]
+      - name: 小米
+        aliases: [小米集团, Xiaomi]
+        stock_code: "01810.HK"
+      - name: 滴滴
+        aliases: [滴滴出行, DiDi]
       - name: 微软
         aliases: [微软中国, Microsoft]
         stock_code: "MSFT"
       - name: 美的
         aliases: [美的集团, Midea]
         stock_code: "000333.SZ"
+      - name: 得物
+        aliases: [得物App, Poizon, DEWU]
+      - name: Meta
+        aliases: [Meta Platforms, Facebook, 脸书]
+        stock_code: "META"
+      - name: 携程
+        aliases: [携程旅行, Trip.com, Ctrip]
+        stock_code: "TCOM"
+      - name: 飞猪
+        aliases: [飞猪旅行, 阿里飞猪]
+      - name: 网易
+        aliases: [网易集团, NetEase]
+        stock_code: "NTES"

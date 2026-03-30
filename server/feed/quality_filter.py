@@ -7,11 +7,69 @@ import re
 import json
 from typing import List
 
+import yaml
+
 from server.feed.models import Event
 from server.feed.dedup import _load_company_aliases, _extract_company_from_text
 
 # 项目根目录
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# 加载互联网科技大厂名称（含别名）
+def _load_internet_companies() -> set:
+    """从 companies.yaml 加载互联网科技大厂名称（含别名）"""
+    yaml_path = os.path.join(ROOT, 'server', 'config', 'companies.yaml')
+    names = set()
+    try:
+        with open(yaml_path, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f)
+        for bl in data.get('business_lines', []):
+            if bl.get('id') == 'internet_tech':
+                for c in bl.get('companies', []):
+                    names.add(c['name'])
+                    names.update(c.get('aliases', []))
+                break
+    except Exception:
+        pass
+    return names
+
+
+_INTERNET_COMPANIES = None
+
+
+def _get_internet_companies() -> set:
+    global _INTERNET_COMPANIES
+    if _INTERNET_COMPANIES is None:
+        _INTERNET_COMPANIES = _load_internet_companies()
+    return _INTERNET_COMPANIES
+
+
+# 大厂普通组织调整关键词（非AI相关）
+_GENERIC_ORG_PATTERNS = re.compile(
+    r'(改名|更名|重命名|搬迁|南迁|动员会|扩编|员工总数|人数增加|人数减少'
+    r'|员工人数|架构调整|组织调整|团队整合|部门整合|业务线整合'
+    r'|成立新部门|事业部改名|事业部调整|人员优化)'
+)
+_AI_KEYWORDS = re.compile(r'(AI|人工智能|大模型|LLM|GPT|token|智能体|机器学习|深度学习|强化学习)')
+
+
+def _is_internet_generic_org(event: Event) -> bool:
+    """判断是否为互联网大厂的普通组织调整事件（非AI相关）"""
+    company = event.company or ''
+    internet = _get_internet_companies()
+    # 检查是否是大厂
+    is_big_tech = any(name in company for name in internet if len(name) >= 2)
+    if not is_big_tech:
+        return False
+    text = (event.summary or '') + ' ' + (event.detail or '')[:200]
+    # 包含普通组织调整关键词
+    if not _GENERIC_ORG_PATTERNS.search(text):
+        return False
+    # 但不包含AI相关关键词
+    if _AI_KEYWORDS.search(text):
+        return False
+    return True
+
 
 # 高管任免类关键词模式（pipeline 层兜底过滤）
 _APPOINTMENT_PATTERNS = [
@@ -76,15 +134,15 @@ def filter_events_by_quality(events: List[Event], batch_size: int = 20) -> List[
     if not events:
         return []
 
-    # 规则预过滤：高管任免类事件直接移除
+    # 规则预过滤：排除大厂普通组织调整事件
     pre_filtered = []
     for ev in events:
-        if _is_personnel_appointment(ev):
-            print(f"    ✗ 规则过滤 [{events.index(ev)}] {ev.summary[:40]}... (高管任免)")
+        if _is_internet_generic_org(ev):
+            print(f"    ✗ 规则过滤 [{ev.company}] {ev.summary[:40]}... (大厂普通组织调整)")
         else:
             pre_filtered.append(ev)
     if len(pre_filtered) < len(events):
-        print(f"  规则预过滤: {len(events)} → {len(pre_filtered)} 个事件 (过滤 {len(events) - len(pre_filtered)} 个高管任免)")
+        print(f"  规则预过滤: {len(events)} → {len(pre_filtered)} (排除 {len(events)-len(pre_filtered)} 条大厂普通组织调整)")
     events = pre_filtered
 
     if not events:

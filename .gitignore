@@ -13,7 +13,10 @@ venv/
 
 # Data (runtime)
 data/cache/
-data/output/
+
+# Data output - only track JSON files for sharing
+data/output/*.html
+data/output/*.md
 
 # Node
 node_modules/

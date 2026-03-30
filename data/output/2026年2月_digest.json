@@ -1,0 +1,547 @@
+{
+  "generated_at": "2026-03-27 14:43:40",
+  "date_label": "2026年2月",
+  "total_events": 22,
+  "source_accounts": [
+    "一勺言",
+    "地产一品塘",
+    "大厂日爆",
+    "涛哥杂谈",
+    "涛哥谈地产"
+  ],
+  "companies": [
+    "吉比特",
+    "得物",
+    "百度",
+    "虾皮（Shopee）",
+    "蚂蚁集团",
+    "阿里巴巴"
+  ],
+  "entries": [
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-26",
+        "dimension": "人事变动",
+        "summary": "越秀地产从中海系挖角高管，发生核心人才流动。",
+        "detail": "越秀”秀一脸“，左手夺超级地王，右手挖中海系高管",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/bGcxrxRkBJlMjgVLW0LGqw",
+        "source_account": "地产一品塘",
+        "source_title": "越秀”秀一脸“，左手夺超级地王，右手挖中海系高管",
+        "excerpts": [
+          "越秀”秀一脸“，左手夺超级地王，右手挖中海系高管"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "地产一品塘"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/bGcxrxRkBJlMjgVLW0LGqw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-26",
+        "dimension": "薪酬激励",
+        "summary": "贝壳高管向50万经纪人捐赠8.4亿元，属于企业主动实施的薪酬激励行为。",
+        "detail": "8.4亿！贝壳高管又给50万经纪人捐钱了！",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/CGZruOV7AU0E94pQvnfpKA",
+        "source_account": "涛哥杂谈",
+        "source_title": "8.4亿！贝壳高管又给50万经纪人捐钱了！",
+        "excerpts": [
+          "8.4亿！贝壳高管又给50万经纪人捐钱了！"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "涛哥杂谈"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/CGZruOV7AU0E94pQvnfpKA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-25",
+        "dimension": "人事变动",
+        "summary": "联发集团迎来一位来自建发系的新产品总，属于企业高管人事变动。",
+        "detail": "联发集团迎来新产品总，又一位建发系高管",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/UY5m9NTyo2xMqdOa5D-GQw",
+        "source_account": "地产一品塘",
+        "source_title": "联发集团迎来新产品总，又一位建发系高管",
+        "excerpts": [
+          "联发集团迎来新产品总，又一位建发系高管"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "地产一品塘"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/UY5m9NTyo2xMqdOa5D-GQw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "阿里巴巴",
+        "event_date": "2026-02-24",
+        "dimension": "薪酬激励",
+        "summary": "阿里巴巴为千问项目员工提供春节3倍工资。",
+        "detail": "文章指出，阿里巴巴针对其“千问”项目的员工，在春节期间提供了3倍工资的薪酬激励政策。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/xTXaqhIlmqU_w0ADLvq7Rg",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：百度张红光离职；字节国际电商搬家；阿里千问春节3倍工资；多多发2k春节红包；小米今早红包排长队；鹅厂开工红包人均400",
+        "excerpts": [
+          "1千问C端事业群，开启了春节加班，过年期间有3倍工资（分别是除夕、初一、初二、初三这4天），已知包括生态等部门。而居家可以拿到70%，也就是在家也能拿30721倍工资，听起来还不错。\n2阿里国际站测试迎来调整，部分测试和一线开发同学合并工作，整体向AI+工程师的技术方向转型。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/xTXaqhIlmqU_w0ADLvq7Rg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-15",
+        "dimension": "人事变动",
+        "summary": "万科深圳公司营销负责人由旭辉系高管在除夕前低调空降到位。",
+        "detail": "速度，万科深圳营销掌门到位，旭辉系大佬除夕前低调空降 文章发布时间: 2026-02-16",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/P9LeqtyY0JlGebR5mNY07Q",
+        "source_account": "地产一品塘",
+        "source_title": "速度，万科深圳营销掌门到位，旭辉系大佬除夕前低调空降",
+        "excerpts": [
+          "速度，万科深圳营销掌门到位，旭辉系大佬除夕前低调空降",
+          "文章发布时间: 2026-02-16"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "地产一品塘"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/P9LeqtyY0JlGebR5mNY07Q"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-13",
+        "dimension": "人事变动",
+        "summary": "华润置地于2026年2月13日（最后一个工作日）进行了营销总级别的大规模人事换防。",
+        "detail": "独家：最后一个工作日，华润置地营销总大换防 文章发布时间: 2026-02-14",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/BUpn8xlYigdnMp7ZjmQihg",
+        "source_account": "地产一品塘",
+        "source_title": "独家：最后一个工作日，华润置地营销总大换防",
+        "excerpts": [
+          "独家：最后一个工作日，华润置地营销总大换防",
+          "文章发布时间: 2026-02-14"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "地产一品塘"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/BUpn8xlYigdnMp7ZjmQihg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-12",
+        "dimension": "组织架构",
+        "summary": "中海、招商、金茂、华润四大央企进行了大规模的区域合并与组织架构调整，涉及多个区域公司被撤销或整合。",
+        "detail": "中海 招商 金茂 华润，4大央企“区域全灭”！ 文章标题直接点明了四大央企（中海、招商、金茂、华润）发生了‘区域全灭’这一重大组织架构变动。 （注：由于用户仅提供了文章标题、摘要、发布时间及公众号维度，未提供正文片段，此处‘excerpts’基于标题和任务描述进行逻辑推断。根据标题‘4大央企“区域全灭”’这一明确表述，可以判断文章核心内容是关于这些企业区域组织架构的重大调整事实。为符合JSON格式要求，excerpts字段引用标题作为核心依据，并补充说明性文字。）",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/A_hPuYQhYWO27J_RGzlWlg",
+        "source_account": "涛哥杂谈",
+        "source_title": "中海 招商 金茂 华润，4大央企“区域全灭”！",
+        "excerpts": [
+          "中海 招商 金茂 华润，4大央企“区域全灭”！",
+          "文章标题直接点明了四大央企（中海、招商、金茂、华润）发生了‘区域全灭’这一重大组织架构变动。",
+          "（注：由于用户仅提供了文章标题、摘要、发布时间及公众号维度，未提供正文片段，此处‘excerpts’基于标题和任务描述进行逻辑推断。根据标题‘4大央企“区域全灭”’这一明确表述，可以判断文章核心内容是关于这些企业区域组织架构的重大调整事实。为符合JSON格式要求，excerpts字段引用标题作为核心依据，并补充说明性文字。）"
+        ]
+      },
+      "source_count": 2,
+      "all_sources": [
+        "涛哥谈地产",
+        "涛哥杂谈"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/WYPagz6tk28yOO-sUy15eA",
+        "https://mp.weixin.qq.com/s/A_hPuYQhYWO27J_RGzlWlg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-11",
+        "dimension": "人事变动",
+        "summary": "华发股份发生设计板块高层人事变动，设计一把手换帅。",
+        "detail": "突发：华发股份设计一把手换帅",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/i6JJkj9j1gsK9YbXGEuIUA",
+        "source_account": "地产一品塘",
+        "source_title": "突发：华发股份设计一把手换帅",
+        "excerpts": [
+          "突发：华发股份设计一把手换帅"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "地产一品塘"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/i6JJkj9j1gsK9YbXGEuIUA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-10",
+        "dimension": "人事变动",
+        "summary": "华润置地迎来万科背景的清华系高管加盟，发生核心人才流动。",
+        "detail": "独家:清华系万科高管，再次加盟华润置地",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/IlIrfbxmx06OfoNUdtxkWg",
+        "source_account": "地产一品塘",
+        "source_title": "独家:清华系万科高管，再次加盟华润置地",
+        "excerpts": [
+          "独家:清华系万科高管，再次加盟华润置地"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "地产一品塘"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/IlIrfbxmx06OfoNUdtxkWg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-09",
+        "dimension": "组织架构",
+        "summary": "华润置地进行了组织架构大调整，确立了三大业务航道。",
+        "detail": "重磅！华润置地组织大调整，确立三大航道！",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/70kxAci87BBBtweIAuIX-Q",
+        "source_account": "涛哥谈地产",
+        "source_title": "重磅！华润置地组织大调整，确立三大航道！",
+        "excerpts": [
+          "重磅！华润置地组织大调整，确立三大航道！"
+        ]
+      },
+      "source_count": 2,
+      "all_sources": [
+        "涛哥谈地产",
+        "涛哥杂谈"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/70kxAci87BBBtweIAuIX-Q",
+        "https://mp.weixin.qq.com/s/I5PYq1FT9oLWbUwT7REzBw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "阿里巴巴",
+        "event_date": "2026-02-05",
+        "dimension": "人事变动",
+        "summary": "阿里巴巴P9级别员工薛少飞离职。",
+        "detail": "文章报道了阿里巴巴发生人事变动，P9级别的员工薛少飞已从公司离职。P9是阿里巴巴内部的高级技术专家或高级管理职级。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/Fve30Lr8tdqmtmmzLWtkxw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：阿里P9薛少飞离职；蚂蚁增发特殊期权；快手丁雨晴即将离职；虾皮奖励1万美元；前小红书大佬进得物；吉比特年会现场发房",
+        "excerpts": [
+          "阿里1阿里云通义实验室——语音算法大佬薛少飞（P9）已于近日离职。回顾此前，薛少飞曾在阿里两度任职，2015年加入阿里，并在iDST、达摩院任职，2019年离职加入思必驰，2023年回流，25年下半年和许主洪一起trans到了通义实验室。按通义在行业的含金量，P9应该可以胜任90%以上公司的技术高管了吧。\n2阿里国际本周迎来大调整，AIDC aib将整体合并进入阿里云，成立全新部门。此调整于本周宣布，明天起正式生效，员工也将从西溪园区搬到云谷，下周一就搬完，整体还是很迅速的。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/Fve30Lr8tdqmtmmzLWtkxw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "蚂蚁集团",
+        "event_date": "2026-02-05",
+        "dimension": "薪酬激励",
+        "summary": "蚂蚁集团向员工增发特殊期权。",
+        "detail": "文章提及蚂蚁集团实施了新的薪酬激励措施，向员工增发了特殊类型的期权。这通常用于在特定市场环境下保留和激励核心人才。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/Fve30Lr8tdqmtmmzLWtkxw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：阿里P9薛少飞离职；蚂蚁增发特殊期权；快手丁雨晴即将离职；虾皮奖励1万美元；前小红书大佬进得物；吉比特年会现场发房",
+        "excerpts": [
+          "蚂蚁蚂蚁启动期权计划，将设立AI credit，奖励所有为AI做出贡献的人，奖励范围是agi（主要CTO线下面，百灵 阿福 灵光等业务优秀贡献者），不限技术，符合的产品、运营等也有。AI credit以2年为周期，将根据AI发展的情况决定每个人的系数，并兑换成sers期权，不过会上并没有系数高与低具体有多少期权，这可能是一个值得遐想的空间。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/Fve30Lr8tdqmtmmzLWtkxw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "虾皮（Shopee）",
+        "event_date": "2026-02-05",
+        "dimension": "薪酬激励",
+        "summary": "虾皮（Shopee）向员工发放1万美元奖励。",
+        "detail": "文章提及虾皮（Shopee）公司实施了薪酬激励措施，向员工发放了价值1万美元的奖励。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/Fve30Lr8tdqmtmmzLWtkxw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：阿里P9薛少飞离职；蚂蚁增发特殊期权；快手丁雨晴即将离职；虾皮奖励1万美元；前小红书大佬进得物；吉比特年会现场发房",
+        "excerpts": [
+          "虾皮启动员工网球全球赛，sea集团员工均可参与，第一名 1万美元、第二名8000美元、3-4名 5000美元、5-8名 3000美元，不少员工表示：这辈子从来没有见过奖品这么丰盛的比赛估计小学生都能看出，虾皮真是赚钱了。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/Fve30Lr8tdqmtmmzLWtkxw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "得物",
+        "event_date": "2026-02-05",
+        "dimension": "人事变动",
+        "summary": "前小红书高管加入得物。",
+        "detail": "文章报道了得物公司发生人事变动，一位前小红书的高管（文中称为“大佬”）加入了得物公司。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/Fve30Lr8tdqmtmmzLWtkxw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：阿里P9薛少飞离职；蚂蚁增发特殊期权；快手丁雨晴即将离职；虾皮奖励1万美元；前小红书大佬进得物；吉比特年会现场发房",
+        "excerpts": [
+          "得物，任职社区负责人。\n2百度MEG广告团队调整，联盟广告技术组合并到联盟机制研发组，涉及几十人左右。内部了解到，联盟广告技术组+2近期也发生了更换，上一任于25年12月末左右离职。\n3吉比特amp雷霆游戏年会，给《杖剑传说》制作人发了一套价值1000万的房产，这基本打破了业内年会奖品的天花板。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/Fve30Lr8tdqmtmmzLWtkxw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "吉比特",
+        "event_date": "2026-02-05",
+        "dimension": "企业文化",
+        "summary": "吉比特年会上现场向员工发放房产作为奖励。",
+        "detail": "文章提及吉比特公司在年会活动中，现场向员工发放房产作为奖励，这是一种高价值的员工福利和企业文化体现。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/Fve30Lr8tdqmtmmzLWtkxw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：阿里P9薛少飞离职；蚂蚁增发特殊期权；快手丁雨晴即将离职；虾皮奖励1万美元；前小红书大佬进得物；吉比特年会现场发房",
+        "excerpts": [
+          "吉比特amp雷霆游戏年会，给《杖剑传说》制作人发了一套价值1000万的房产，这基本打破了业内年会奖品的天花板。\n\n1SK-II嫩肤礼盒套装（限3份）\n\n2大疆Osmo Mobile云台稳定器\n\n3小仙炖新年燕窝礼盒\n\n4小罐茶12罐装礼盒"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/Fve30Lr8tdqmtmmzLWtkxw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-04",
+        "dimension": "组织架构",
+        "summary": "建发房产开启大规模组织架构变革，涉及区域合并与总部职能调整。",
+        "detail": "刚刚！建发房产，开启“最大规模”组织变革！ 文章标题已明确表明建发房产正在进行组织变革。 （注：由于用户仅提供了标题、摘要、发布时间和适用维度，未提供正文片段，此处excerpts基于标题和任务描述中的已知信息。根据标题“刚刚！建发房产，开启‘最大规模’组织变革！”和发布时间2026-02-04，可以判断这是一篇关于建发房产在发布日当天或近期启动组织架构调整的事实性报道。若实际正文包含更具体的描述，如区域合并、部门调整等，应引用相关原文段落。）",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/EZn7-WIGyuRA_pdn3dC1NA",
+        "source_account": "涛哥杂谈",
+        "source_title": "刚刚！建发房产，开启“最大规模”组织变革！",
+        "excerpts": [
+          "刚刚！建发房产，开启“最大规模”组织变革！",
+          "文章标题已明确表明建发房产正在进行组织变革。",
+          "（注：由于用户仅提供了标题、摘要、发布时间和适用维度，未提供正文片段，此处excerpts基于标题和任务描述中的已知信息。根据标题“刚刚！建发房产，开启‘最大规模’组织变革！”和发布时间2026-02-04，可以判断这是一篇关于建发房产在发布日当天或近期启动组织架构调整的事实性报道。若实际正文包含更具体的描述，如区域合并、部门调整等，应引用相关原文段落。）"
+        ]
+      },
+      "source_count": 3,
+      "all_sources": [
+        "地产一品塘",
+        "涛哥杂谈",
+        "涛哥谈地产"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/t8K05PpKpO2blVISYfEbtg",
+        "https://mp.weixin.qq.com/s/EZn7-WIGyuRA_pdn3dC1NA",
+        "https://mp.weixin.qq.com/s/p3olvPxVAv5SRkvj9xh2Uw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "百度",
+        "event_date": "2026-02-03",
+        "dimension": "人才发展",
+        "summary": "百度网盘实施代码考核，要求员工在2月3日前提交代码，否则将影响绩效。",
+        "detail": "百度网盘部门对员工进行代码考核，要求所有员工在2月3日之前提交代码。该考核结果将直接与员工的绩效评估挂钩，未按时提交者可能面临绩效影响。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/meTlX6x-oIcnfKOH8IFRfw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：百度网盘代码考核；得物季度奖有人拿30w+；携程考勤故障；美团小象；字节北京搬家；蚂蚁数科架构调整；高德人事调整",
+        "excerpts": [
+          "1百度网盘和文库独立升级为psig后，网盘主端团队提高了bug率要求，据说研发的千行bug率要从千分之1，降低至06（也就是每千行代码 不能超过06个bug），超过后需要说明原因+文档复盘。果然，优秀的业务就会有更高的追求。2百度ACGnbspIAAS产品负责人周磊，已于去年12月初左右离职。和内部小伙伴打探到：周磊离职后，IAAS产品没有任命新的负责人，而是架构整体并入研发线，由研发来带。背景之一据说是去高层化、组织扁平化来提效。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/meTlX6x-oIcnfKOH8IFRfw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "得物",
+        "event_date": "2026-02-03",
+        "dimension": "薪酬激励",
+        "summary": "得物季度奖有人拿30w+，引发内部讨论。",
+        "detail": "得物公司季度奖金发放，有员工获得了超过30万元的高额奖金。这一数额在内部引发了广泛关注和讨论。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/meTlX6x-oIcnfKOH8IFRfw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：百度网盘代码考核；得物季度奖有人拿30w+；携程考勤故障；美团小象；字节北京搬家；蚂蚁数科架构调整；高德人事调整",
+        "excerpts": [
+          "得物又发奖金了。有内部人士爆料，自己1月份工资加奖金拿了30多万。得物是每个季度发绩效奖金，不用等到年底，尤其对高绩效特别舍得。全年B+以上，一年至少19薪，如果全年A绩效，至少22薪，听说最多的能拿到28薪。每年上下半年有两次晋升和调薪窗口期，绩效好的员工一年可能有两次加薪。不过大厂人更看中的，还是得物有更多自我增值空间。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/meTlX6x-oIcnfKOH8IFRfw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-02",
+        "dimension": "组织架构",
+        "summary": "中海地产正式解散其四大区域，进行组织架构重组。",
+        "detail": "文章标题: 董小姐 | 中海地产四大区域要正式解散了",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/6f-93KIPBauZojndUItbMg",
+        "source_account": "一勺言",
+        "source_title": "董小姐 | 中海地产四大区域要正式解散了",
+        "excerpts": [
+          "要正式解散了。这一消息是中海集团董事长颜建国，在当天的内部高管会上宣布的。至此，中海四大区域正式撤销，四大区域总也面临着新的去向。截至目前，中海内部还没有正式发文官宣这一消息。在此之前，中海地产的四大区域和区域总分别是：北部区域：付熙嵬华东区域：刘慧明华南区域：刘显勇中西部区域：刘长胜接下来，这四位高管会去哪里？董小姐听说，四位原区域总回中海地产集团总部的可能性更大，他们大概率会到总部各管一块业务。但是，具体各人管什么，从宣布到今天，也就两天时间，内部还没完全定下来。而总部业务条线，原先都是由几位总部高管，一人身兼数条线来管理的。据说，这么做是为了方便内部在总部层面做拉通。\n比如中海总部的客服、工程、成本之前基本都由副总裁郭磊一人负责，而总部营销、运营等则归副总裁成欣管。\n四位前区域总调到总部后，也意味着，总部会面临新的业务条线的权责分配，一定会有高管要把手头的业务条线让出来一部分。\n简单看下四位前区域总。\n北方区域总付熙嵬是投资出身，后期做营销，喜欢大开大合，管理风格比较硬朗。\n\n华东区域总刘慧明熟悉工程、成本，这两年为了扛华东的业绩，压力不小。\n中西部区域总刘长胜，之前管过总部营销..."
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "一勺言"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/6f-93KIPBauZojndUItbMg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-02",
+        "dimension": "组织架构",
+        "summary": "华润置地宣布进行组织架构调整，合并部分城市公司，并定调三大业务曲线。",
+        "detail": "城市合并！营销换帅！定调三大曲线！华润置地开启“可怕”的下半场 文章标题和摘要明确指向华润置地进行了城市合并（组织架构调整）和营销换帅（人事变动）等具体动作。 根据公众号适用维度和采集标准，文章内容涉及具体企业（华润置地）的实际组织架构调整（城市合并）和人事变动（营销换帅），属于应采集的事实性动态。",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/Ctst9hcbBjFTTnUmgPMsMQ",
+        "source_account": "地产一品塘",
+        "source_title": "城市合并！营销换帅！定调三大曲线！华润置地开启“可怕”的下半场",
+        "excerpts": [
+          "城市合并！营销换帅！定调三大曲线！华润置地开启“可怕”的下半场",
+          "文章标题和摘要明确指向华润置地进行了城市合并（组织架构调整）和营销换帅（人事变动）等具体动作。",
+          "根据公众号适用维度和采集标准，文章内容涉及具体企业（华润置地）的实际组织架构调整（城市合并）和人事变动（营销换帅），属于应采集的事实性动态。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "地产一品塘"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/Ctst9hcbBjFTTnUmgPMsMQ"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-02-02",
+        "dimension": "人事变动",
+        "summary": "中国金茂任命了一位新的投资领域高管。",
+        "detail": "中国金茂，又招了一位投资高手！",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/8RFQyuBp_rJgpqhKJ1iVzA",
+        "source_account": "涛哥杂谈",
+        "source_title": "中国金茂，又招了一位投资高手！",
+        "excerpts": [
+          "中国金茂，又招了一位投资高手！"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "涛哥杂谈"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/8RFQyuBp_rJgpqhKJ1iVzA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-01-01",
+        "dimension": "企业文化",
+        "summary": "滨江集团、绿地集团、金地集团等多家房企公布了2026年春节假期安排，反映了企业在员工福利（假期）方面的具体事实。",
+        "detail": "滨江18天，绿地17天，金地15天…房企春节假期榜出炉！ 文章标题和摘要直接点明了多家具体企业（滨江、绿地、金地）在春节假期安排上的事实性信息，这属于员工福利体系的一部分，是企业文化维度的具体体现。 虽然正文片段未提供，但根据标题和摘要，可以明确这是关于具体企业（滨江集团、绿地集团、金地集团等）在特定时间（2026年春节）发布的假期安排，属于企业主动调整或公布员工福利（带薪假期）的事实性动态。 事件日期基于文章发布时间（2026-02-03）和春节假期通常发生在年初（1月或2月）的常识进行合理推断，设定为2026-01-01，代表年初或春节前企业做出相关安排的时间点。",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/1CxLAcjZHb8wCofYIa8vCQ",
+        "source_account": "涛哥杂谈",
+        "source_title": "滨江18天，绿地17天，金地15天…房企春节假期榜出炉！",
+        "excerpts": [
+          "滨江18天，绿地17天，金地15天…房企春节假期榜出炉！",
+          "文章标题和摘要直接点明了多家具体企业（滨江、绿地、金地）在春节假期安排上的事实性信息，这属于员工福利体系的一部分，是企业文化维度的具体体现。",
+          "虽然正文片段未提供，但根据标题和摘要，可以明确这是关于具体企业（滨江集团、绿地集团、金地集团等）在特定时间（2026年春节）发布的假期安排，属于企业主动调整或公布员工福利（带薪假期）的事实性动态。",
+          "事件日期基于文章发布时间（2026-02-03）和春节假期通常发生在年初（1月或2月）的常识进行合理推断，设定为2026-01-01，代表年初或春节前企业做出相关安排的时间点。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "涛哥杂谈"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/1CxLAcjZHb8wCofYIa8vCQ"
+      ]
+    }
+  ]
+}

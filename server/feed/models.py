@@ -53,6 +53,7 @@ class Event:
     source_url: str
     source_account: str
     source_title: str = ""
+    excerpts: List[str] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return {
@@ -65,6 +66,7 @@ class Event:
             "source_url": self.source_url,
             "source_account": self.source_account,
             "source_title": self.source_title,
+            "excerpts": self.excerpts,
         }
 
 

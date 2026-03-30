@@ -1,0 +1,1036 @@
+{
+  "generated_at": "2026-03-30 04:43:14",
+  "date_label": "2026年3月",
+  "total_events": 41,
+  "source_accounts": [
+    "AI组织进化论",
+    "BAT",
+    "HR COFFEE社群",
+    "中国企业家杂志",
+    "华尔街透视",
+    "地产一品塘",
+    "大厂日爆",
+    "涛哥杂谈",
+    "莫老爷"
+  ],
+  "companies": [
+    "万达商管",
+    "京东",
+    "字节跳动",
+    "小红书",
+    "快手",
+    "拼多多",
+    "携程",
+    "旭辉集团",
+    "理想汽车",
+    "百度",
+    "碧桂园",
+    "网易",
+    "美团",
+    "腾讯",
+    "蚂蚁集团",
+    "贝壳",
+    "越秀地产",
+    "阿里巴巴",
+    "飞猪",
+    "龙湖集团"
+  ],
+  "entries": [
+    {
+      "canonical": {
+        "company": "越秀地产",
+        "event_date": "2026-03-28",
+        "dimension": "人事变动",
+        "summary": "越秀地产华东区域发生人事变动，更换了区域负责人。",
+        "detail": "文章标题: 突发：越秀地产华东区域换帅",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/7UkXJRIOCQIIchY1qaVJhw",
+        "source_account": "地产一品塘",
+        "source_title": "突发：越秀地产华东区域换帅",
+        "excerpts": [
+          "越秀地产原华东区域联席总经理",
+          "闫强亲自挂帅上海公司总经理，这年头老大必须要亲自指挥战斗。",
+          "时间拉回到2024年1月，刚履新龙湖不久的前旭辉集团营销总",
+          "闫强履新越秀地产，担任华东区域联席总经理。",
+          "闫强，1981年生，本科毕业于南开大学，研究生毕业于天津大学。2007年硕士毕业后，",
+          "闫强即以新动力身份入职南京万科，开始了地产营销职业生涯"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "地产一品塘"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/7UkXJRIOCQIIchY1qaVJhw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-03-26",
+        "dimension": "人事变动",
+        "summary": "农夫山泉钟睒睒的得力干将离职，属于高管人事变动。",
+        "detail": "百万年薪也留不住？钟睒睒损失一员“得力干将” 文章标题: 百万年薪也留不住？钟睒睒损失一员“得力干将”",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/Gl_zB4Q84jrdkwHKawOmKg",
+        "source_account": "中国企业家杂志",
+        "source_title": "百万年薪也留不住？钟睒睒损失一员“得力干将”",
+        "excerpts": []
+      },
+      "source_count": 1,
+      "all_sources": [
+        "中国企业家杂志"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/Gl_zB4Q84jrdkwHKawOmKg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "小红书",
+        "event_date": "2026-03-25",
+        "dimension": "薪酬激励",
+        "summary": "小红书期权价值暴涨至30美元，员工薪酬激励价值大幅提升。",
+        "detail": "文章提到小红书的期权价值近期出现显著上涨，达到了30美元。这属于公司股权激励计划的价值变动，直接影响到持有期权的员工财富。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：小红书期权暴涨至30美元；美团上架小众点评“鸭觅” ；字节年终开奖；蚂蚁P10吴翼离职；小米南迁动员会；京东空降新高管",
+        "excerpts": [
+          "小红书今天再次上调期权价格，授予价直接涨到30美元/股，行权价依然是2美元，每股收益28美元。",
+          "回头看过去1年，小红书期权从25年3月的135美元，飙升至26年3月的30美元，累计涨幅约122%，比翻一倍还多，已是互联网行业中现象级增长的公司。",
+          "红薯厂的打工人们这几年也算是坐上了火箭，把公司发展的红利揣进了兜里。",
+          "此外，小红书现在有大量校招社招岗位，现在入职期权也即刻生效，就是按30美元/股的价格授予。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "字节跳动",
+        "event_date": "2026-03-25",
+        "dimension": "薪酬激励",
+        "summary": "字节跳动进行年终奖开奖",
+        "detail": "文章指出字节跳动在近期进行了年终奖的开奖。这是公司年度薪酬激励计划的关键环节，直接关系到员工的年度现金收入。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：小红书期权暴涨至30美元；美团上架小众点评“鸭觅” ；字节年终开奖；蚂蚁P10吴翼离职；小米南迁动员会；京东空降新高管",
+        "excerpts": [
+          "今年年终整体超出预期。",
+          "绩效E：今年9个月起步，头部12个月左右较为普遍。",
+          "绩效M+：今年5个月起步，实际7-8个月左右较为普遍，几乎达到了以前E的水平。",
+          "绩效M：3个月起步，腰部不少人4个月左右，头部可达5个月，达到以前M+的水平。",
+          "今年年终投入明显加大，绩效档位的差距明显加大。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "蚂蚁集团",
+        "event_date": "2026-03-25",
+        "dimension": "人事变动",
+        "summary": "蚂蚁集团P10级别高管吴翼离职",
+        "detail": "蚂蚁集团发生人事变动，职级为P10的高管吴翼已从公司离职。P10是蚂蚁集团内部的高级职级，此次变动属于核心人才流动。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：小红书期权暴涨至30美元；美团上架小众点评“鸭觅” ；字节年终开奖；蚂蚁P10吴翼离职；小米南迁动员会；京东空降新高管",
+        "excerpts": [
+          "蚂蚁强化学习实验室首席科学家吴翼已于上周离职，职级P10。",
+          "吴翼毕业于清华本科、伯克利博士，曾在OpenAI就任研究员。",
+          "蚂蚁ai force迎来大调整，原团队大半（约100+人）划到蚂蚁数科。",
+          "原团队的另一小半（约80人左右）开了第二个贯宣会，主题是发钱。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "京东",
+        "event_date": "2026-03-25",
+        "dimension": "人事变动",
+        "summary": "京东空降新高管",
+        "detail": "京东集团从外部引入（空降）了新的高级管理人员。这属于公司高层人事变动，可能涉及战略调整或业务线管理。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：小红书期权暴涨至30美元；美团上架小众点评“鸭觅” ；字节年终开奖；蚂蚁P10吴翼离职；小米南迁动员会；京东空降新高管",
+        "excerpts": [
+          "京东酒旅最近空降了新的1号位，系统里的名字叫邓军，据说在酒旅行业很资深，在某OTA大厂担任过核心高管的位置。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-03-25",
+        "dimension": "人才发展",
+        "summary": "味多美被曝在招聘中存在拒录北京户籍员工的行为，引发户籍歧视争议。",
+        "detail": "文章标题: 【动态】味多美被曝招聘拒录北京户籍员工 户籍歧视争议持续发酵",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/pU2_XI8wuvWaeWyRCZDxsg",
+        "source_account": "HR COFFEE社群",
+        "source_title": "【动态】味多美被曝招聘拒录北京户籍员工 户籍歧视争议持续发酵",
+        "excerpts": [
+          "她回忆，此前多位味多美 HR 起初沟通正常，得知其北京户籍后便突然断联，直至新 HR 对接时，她主动问询才得到 不考虑北京本地人 的明确答复。",
+          "更令她诧异的是，企业竟在面试意向填报阶段，就以户籍作为是否安排面试的筛选标准，这种操作是她求职过程中从未遭遇过的。",
+          "记者联系的味多美HR表示，对此，味多美官方 HR 在接受采访时否认存在相关规定，称公司内部有不少北京籍员工，各门店用工是结合实际运营需求、人员稳定性等因素综合考量，不存在针对户籍的歧视性要求。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "HR COFFEE社群"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/pU2_XI8wuvWaeWyRCZDxsg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "蚂蚁集团",
+        "event_date": "2026-03-25",
+        "dimension": "人事变动",
+        "summary": "蚂蚁集团P10级别高管吴翼离职。",
+        "detail": "蚂蚁集团发生人事变动，职级为P10的高管吴翼已从公司离职。P10是蚂蚁集团内部的高级职级，此次变动属于核心人员流动。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：小红书期权暴涨至30美元；美团上架小众点评“鸭觅” ；字节年终开奖；蚂蚁P10吴翼离职；小米南迁动员会；京东空降新高管",
+        "excerpts": [
+          "蚂蚁强化学习实验室首席科学家吴翼已于上周离职，职级P10。",
+          "吴翼毕业于清华本科、伯克利博士，曾在OpenAI就任研究员。",
+          "蚂蚁ai force迎来大调整，原团队大半（约100+人）划到蚂蚁数科。",
+          "另外据内部同学透露：原团队的另一小半（约80人左右）开了第二个贯宣会。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "京东",
+        "event_date": "2026-03-25",
+        "dimension": "人事变动",
+        "summary": "京东空降了新的高管，涉及高层管理团队的人事任命。",
+        "detail": "京东集团有新的高管“空降”，即从外部引入并任命了新的高级管理人员。这属于公司高层人事变动。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：小红书期权暴涨至30美元；美团上架小众点评“鸭觅” ；字节年终开奖；蚂蚁P10吴翼离职；小米南迁动员会；京东空降新高管",
+        "excerpts": [
+          "京东酒旅最近空降了新的1号位，系统里的名字叫邓军，据说在酒旅行业很资深，在某OTA大厂担任过核心高管的位置。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/GoeMGJa-KBlrIwOan7ZJ2w"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "碧桂园",
+        "event_date": "2026-03-22",
+        "dimension": "人才发展",
+        "summary": "碧桂园启动针对前员工的返聘计划，旨在吸引人才回流。",
+        "detail": "碧桂园人，凤厂喊你回家了？！ 文章发布时间: 2026-03-22",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/ENG-R6RA86mvsGm21clkDQ",
+        "source_account": "涛哥杂谈",
+        "source_title": "碧桂园人，凤厂喊你回家了？！",
+        "excerpts": []
+      },
+      "source_count": 1,
+      "all_sources": [
+        "涛哥杂谈"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/ENG-R6RA86mvsGm21clkDQ"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-03-22",
+        "dimension": "薪酬激励",
+        "summary": "宇树科技计划通过股权激励批量制造亿万富豪，其创始人王兴兴表示公司上市后将进行大规模股权激励，并已为早期员工预留了可观股份。",
+        "detail": "宇树科技创始人王兴兴表示，公司上市后，将进行大规模股权激励，让更多员工分享公司成长红利。 王兴兴透露，宇树科技已经为早期员工预留了可观的股份，一旦公司成功上市，这些员工将有望成为亿万富豪。 宇树科技计划通过股权激励，批量制造亿万富豪，这不仅是公司对核心人才的激励，也是对未来发展的信心体现。",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/VCC1L00dmWlvrvsgMFZHeQ",
+        "source_account": "中国企业家杂志",
+        "source_title": "王兴兴，准备“批发”亿万富豪｜一周人物",
+        "excerpts": [
+          "宇树科技创始人王兴兴表示，公司上市后，将进行大规模股权激励，让更多员工分享公司成长红利。",
+          "王兴兴透露，宇树科技已经为早期员工预留了可观的股份，一旦公司成功上市，这些员工将有望成为亿万富豪。",
+          "宇树科技计划通过股权激励，批量制造亿万富豪，这不仅是公司对核心人才的激励，也是对未来发展的信心体现。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "中国企业家杂志"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/VCC1L00dmWlvrvsgMFZHeQ"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "腾讯",
+        "event_date": "2026-03-21",
+        "dimension": "薪酬激励",
+        "summary": "腾讯披露其2025年人均年薪成本为112.8万元，引发广泛关注和讨论。",
+        "detail": "文章标题: 【动态】腾讯人均年薪成本112.8万刷屏热搜：别光羡慕，这组数据的真相没那么简单 文章发布时间: 2026-03-21",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/MeVJcNL_zzEs5fD4zV7HCQ",
+        "source_account": "HR COFFEE社群",
+        "source_title": "【动态】腾讯人均年薪成本112.8万刷屏热搜：别光羡慕，这组数据的真相没那么简单",
+        "excerpts": [
+          "年薪成本高达1128万元，直接刷新了大众对互联网大厂薪酬的认知。",
+          "财报数据显示，截至2025年底，腾讯员工总人数为115849人，相比2024年不仅没有缩减规模，反而逆势扩招5291人。",
+          "在当下不少行业仍在降本增效、收缩人力的大环境下，腾讯一边扩招超五千人，一边拿出1307亿真金白银投入员工薪酬。",
+          "面对这份亮眼的人均薪酬数据，绝大多数人的第一反应都是羡慕，但其实这里藏着最容易被忽略的核心误区：这1128万是腾讯为每位员工付出的企业薪酬总成本，完全不等于员工实际到手的税后收入，大家千万别被平均值带偏了认知。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "HR COFFEE社群"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/MeVJcNL_zzEs5fD4zV7HCQ"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-03-20",
+        "dimension": "组织架构",
+        "summary": "萨克斯环球（Saks Global）计划于2026年进行第11章破产重组，这属于重大的组织架构变动事件。",
+        "detail": "文章标题: 萨克斯环球（Saks Global）2026年第11章破产重组与资本转型深度剖析",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/yIPcqMuY5_A2Y_SK5YMohA",
+        "source_account": "华尔街透视",
+        "source_title": "萨克斯环球（Saks Global）2026年第11章破产重组与资本转型深度剖析",
+        "excerpts": [
+          "萨克斯环球企业（Saks Global Enterprises LLC）正式向美国得克萨斯州南区破产法院申请第11章破产保护（Chapter 11），这一举动震动了全球零售与资本市场。",
+          "公司被迫启动了一项总额高达175亿美元的破产融资方案（DIP Financing）。",
+          "近期，随着最后3亿美元资金的成功拨付，Saks Global在破产重组的道路上迈出了决定性的一步。",
+          "2024年底，在HBC主导下，Saks以27亿美元收购了竞争对手尼曼·马库斯集团（Neiman Marcus Group），从而重组成立了如今的Saks Global。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "华尔街透视"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/yIPcqMuY5_A2Y_SK5YMohA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-03-20",
+        "dimension": "人事变动",
+        "summary": "摩根大通聘请高盛资深人士共同领导其中国区投资银行业务。",
+        "detail": "文章标题: 摩根大通聘请高盛资深人士共同领导中国区投资银行业务",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/SwCWCYqZ7yJDQV3SHxbpnQ",
+        "source_account": "华尔街透视",
+        "source_title": "摩根大通聘请高盛资深人士共同领导中国区投资银行业务",
+        "excerpts": [
+          "聘请高盛（Goldman Sachs）二十年资深银行家张毅（Yi Zhang）与现任主管王洁（Michelle Wang）共同出任中国区投资银行业务双主管（Co-Head）。",
+          "这一重大人事任命不仅是华尔街顶级投行间人才争夺战的缩影，更标志着摩根大通在亚太区竞争架构中的一次决定性战略转向。",
+          "面对部分竞争对手缩减编制、收缩战线的当下，摩根大通采取了截然不同的扩张姿态，旨在精准对接中国十五五规划下的高新工业与制造业升级机遇。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "华尔街透视"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/SwCWCYqZ7yJDQV3SHxbpnQ"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "旭辉集团",
+        "event_date": "2026-03-20",
+        "dimension": "人事变动",
+        "summary": "旭辉集团首席人力资源官（CHO）葛明突然离职。",
+        "detail": "文章标题: 旭辉还能坚持多久？集团CHO葛明突然离职",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/GahmjihT0LgNHUJOa0auGQ",
+        "source_account": "地产一品塘",
+        "source_title": "旭辉还能坚持多久？集团CHO葛明突然离职",
+        "excerpts": [
+          "旭辉集团内部已经几乎官宣了一则高管流动消息：集团副总裁兼CHO葛明确认离职。",
+          "这不仅仅是旭辉近两年离职高管中级别最高的一位，更是一个极具象征意义的节点。",
+          "葛总在这一关键时间节点突然离职，在旭辉内部hr团队里面都呈现不可思议的状态，或许其中会有一些复杂情绪。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "地产一品塘"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/GahmjihT0LgNHUJOa0auGQ"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "腾讯",
+        "event_date": "2026-03-19",
+        "dimension": "组织架构",
+        "summary": "腾讯公司重启内部赛马机制，以应对AI领域竞争，反映了其组织架构和战略方向的调整。",
+        "detail": "马化腾着急了，腾讯AI重启赛马 文章发布时间: 2026-03-19",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/qO7RowLbVlyxT_JvIXM6rg",
+        "source_account": "中国企业家杂志",
+        "source_title": "马化腾着急了，腾讯AI重启赛马",
+        "excerpts": []
+      },
+      "source_count": 1,
+      "all_sources": [
+        "中国企业家杂志"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/qO7RowLbVlyxT_JvIXM6rg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "百度",
+        "event_date": "2026-03-18",
+        "dimension": "人事变动",
+        "summary": "百度搜索总经理赵世奇将离职",
+        "detail": "百度搜索业务负责人、总经理赵世奇即将从公司离职。这是百度核心业务部门的一次重要人事变动。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/HUqK4l5sNe1yoMTvVaPiUg",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：百度搜索总经理赵世奇将离职；蚂蚁迎来职级改革；得物晚餐时间提前；字节seed绩效公布推迟；阿里全员发token",
+        "excerpts": [
+          "百度搜索老大赵世奇将于近期离职，原NLP的总监何径舟接棒。赵世奇于2010年哈工大博士毕业后加入百度，曾主导百度知心、小度机器人等项目，2024年回流担任百度副总裁，曾与王海峰共同出现在百度NLP十年十人的核心成员中，当时江湖人称「百度NLP十大帅之一」。\n百度推出手机版龙虾——红手指。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/HUqK4l5sNe1yoMTvVaPiUg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "蚂蚁集团",
+        "event_date": "2026-03-18",
+        "dimension": "人才发展",
+        "summary": "蚂蚁集团迎来职级改革",
+        "detail": "蚂蚁集团内部启动了职级体系改革，这是公司人才发展体系的一次重要调整。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/HUqK4l5sNe1yoMTvVaPiUg",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：百度搜索总经理赵世奇将离职；蚂蚁迎来职级改革；得物晚餐时间提前；字节seed绩效公布推迟；阿里全员发token",
+        "excerpts": [
+          "蚂蚁本周迎来职级大改革，一线基层TL（16级左右）被重新划分为M序列和S序列，其中M序列为管理者，跟原来差异不大；S序列为专业主管，将不再有绩效决定权（变相降级）。",
+          "和内部同学了解到，现在每个员工的组织结构上，都有直属主管、专业主管、管理者等多个+1信息；因为S序列失去绩效权，基层TL躺平可能比以前更难。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/HUqK4l5sNe1yoMTvVaPiUg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "字节跳动",
+        "event_date": "2026-03-18",
+        "dimension": "人才发展",
+        "summary": "字节跳动seed绩效公布推迟",
+        "detail": "字节跳动推迟了其seed绩效的公布时间。seed绩效是字节跳动内部的一种绩效评估体系，此次推迟涉及绩效管理流程。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/HUqK4l5sNe1yoMTvVaPiUg",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：百度搜索总经理赵世奇将离职；蚂蚁迎来职级改革；得物晚餐时间提前；字节seed绩效公布推迟；阿里全员发token",
+        "excerpts": [
+          "字节seed绩效公布时间推迟，原定是3月底跟着全集团一起完成，现在是3月只公布非seed了。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/HUqK4l5sNe1yoMTvVaPiUg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "阿里巴巴",
+        "event_date": "2026-03-18",
+        "dimension": "薪酬激励",
+        "summary": "阿里巴巴向全员发放token",
+        "detail": "阿里巴巴集团向全体员工发放了token，这通常与公司的股权激励或内部福利计划相关。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/HUqK4l5sNe1yoMTvVaPiUg",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：百度搜索总经理赵世奇将离职；蚂蚁迎来职级改革；得物晚餐时间提前；字节seed绩效公布推迟；阿里全员发token",
+        "excerpts": [
+          "阿里本周内部通知，给员工提供大量免费token额度，用来免费使用悟空、Qoder等ai工具。token已经成为了AI时代的新货币， 只能说一代人有一代人的鸡蛋要领吧"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/HUqK4l5sNe1yoMTvVaPiUg"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "贝壳",
+        "event_date": "2026-03-18",
+        "dimension": "人才发展",
+        "summary": "贝壳宣布投入5亿元用于生态建设、经纪人培训和消费者权益保护，反映了其在人才发展（经纪人培训）方面的具体投入和战略动作。",
+        "detail": "文章标题: 贝壳年二手单量历史新高！5亿投入生态建设、经纪人培训和消保",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/3H6oHu0IyVWzL4V-ZawdQQ",
+        "source_account": "涛哥杂谈",
+        "source_title": "贝壳年二手单量历史新高！5亿投入生态建设、经纪人培训和消保",
+        "excerpts": [
+          "2025年6月，贝壳发布1+5个2战略体系，并宣布将投入4亿元，聚焦机制建设、服务承诺、业务助力等多个维度，全面赋能门店成长，推动行业服务正循环。",
+          "2026年年初，贝壳更是面向平台在职的约50万经纪人免费开放职业能力全员训，围绕经纪人专业能力提升开展线下授课与培训。",
+          "2025年，贝壳正式发布真保障全流程服务保障体系..."
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "涛哥杂谈"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/3H6oHu0IyVWzL4V-ZawdQQ"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "碧桂园",
+        "event_date": "2026-03-17",
+        "dimension": "人才发展",
+        "summary": "碧桂园启动大规模‘老兵召回’计划，旨在吸引前员工回归。",
+        "detail": "文章标题: 突发！碧桂园启动最大规模「老兵召回」计划",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/AlbCMXkNW12MFhKBns-92Q",
+        "source_account": "莫老爷",
+        "source_title": "突发！碧桂园启动最大规模「老兵召回」计划",
+        "excerpts": [
+          "碧桂园要面向碧桂园控股有限公司（HK02007）及下属业务公司所有离职人员，打开返聘通道。",
+          "据统计，过去7年间，碧桂园减员超过11万人（2018年末约1314万人2025年中仅剩约179万人），减员比例高达86%。",
+          "为匹配公司经营恢复阶段的发展节奏与新项目开发诉求。",
+          "她说：今年碧桂园不再只盯着保交楼，也要回归正常经营，有条件的区域，可以开发新地，盖房子了！",
+          "目前，碧桂园国内外将近1800亿债务已经全部完成重组，手上还有10365万方可建/可售土储，够再盖几十万套房呢。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "莫老爷"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/AlbCMXkNW12MFhKBns-92Q"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "阿里巴巴",
+        "event_date": "2026-03-16",
+        "dimension": "组织架构",
+        "summary": "阿里巴巴集团成立新的token事业群，由吴泳铭亲自带队，并与电商事业群、云智能事业群平级。",
+        "detail": "刚刚，阿里成立token事业群，吴泳铭亲自带队，与电商事业群、云智能事业群平级",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/owcOXwxFxBnDgH2G7W9cZA",
+        "source_account": "大厂日爆",
+        "source_title": "刚刚，阿里成立token事业群，吴泳铭亲自带队，与电商事业群、云智能事业群平级",
+        "excerpts": [
+          "阿里巴巴成立Alibaba Token Hub（ATH）事业群，由阿里巴巴CEO吴泳铭直接负责。",
+          "集团决定正式成立Alibaba Token Hub（ATH）事业群，建立以创造 Token、输送 Token、应用Token为核心目标的新组织。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/owcOXwxFxBnDgH2G7W9cZA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "龙湖集团",
+        "event_date": "2026-03-14",
+        "dimension": "人事变动",
+        "summary": "龙湖地产营销负责人发生人事变动。",
+        "detail": "文章标题: 突发：龙湖地产营销一把手换帅",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/qjzvbiqeF_kUf-d9TvfQag",
+        "source_account": "地产一品塘",
+        "source_title": "突发：龙湖地产营销一把手换帅",
+        "excerpts": [
+          "营销一把手范燊正式卸任，这位90后营销男神告别龙湖，这也预示着龙湖地产营销正式换帅。",
+          "范燊，出生于1990年，本科毕业于复旦大学，学霸气质在他身上得到凸显。",
+          "2011年毕业后他作为绽放生加入龙湖集团，开启营销职业生涯。",
+          "2021年，龙湖地产营销体系大变革，并成立四大营销战区，范燊被任命为华中战区营销负责人，统管西安、武汉、长沙、郑州、江西等地区的营销管理工作。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "地产一品塘"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/qjzvbiqeF_kUf-d9TvfQag"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "美团",
+        "event_date": "2026-03-13",
+        "dimension": "企业文化",
+        "summary": "美团呼吁员工在内部沟通中直呼其名，以营造更平等的文化氛围。",
+        "detail": "美团公司内部发起了一项倡议，呼吁员工在沟通时直接称呼对方姓名，而非使用职级称谓。此举旨在打破层级壁垒，营造更开放、平等的企业文化。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/DQKezXUA9T4IaxwLDTUxPw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：小红书组织架构调整，成立rednote；美团呼吁员工直呼其名；字节开启龙虾争霸赛；快手研发线换帅；百度网盘文库人员扩张",
+        "excerpts": [
+          "美团开启直呼其名的文化潮流，员工间日常沟通直接叫名字，避免x哥、x爷、x姐等称呼。内部打听到一些背景是，公司希望拥抱AI时代人人的平等趋势、减少登味，今早王兴、莆中等高管在会上现场表态，下午王兴也亲自在内网发文称：虽然兴哥的叫法已经30年，但从现在开始请叫我王兴，也有厂友现场评论收到王兴"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/DQKezXUA9T4IaxwLDTUxPw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "快手",
+        "event_date": "2026-03-13",
+        "dimension": "人事变动",
+        "summary": "快手公司研发线负责人发生变动，即“换帅”。",
+        "detail": "快手公司对其研发线负责人进行了更换，即发生了“换帅”。这是公司内部重要技术管理岗位的人事调整。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/DQKezXUA9T4IaxwLDTUxPw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：小红书组织架构调整，成立rednote；美团呼吁员工直呼其名；字节开启龙虾争霸赛；快手研发线换帅；百度网盘文库人员扩张",
+        "excerpts": [
+          "3月13日，快手公司内部发布人事调整公告，宣布由郭亮接替陈彬任研发线负责人，陈彬因个人原因离职。",
+          "接任者郭亮于2018年加入快手，历任音视频直播架构负责人、音视频算法负责人、直播技术部、主站技术部负责人，曾主导推动了多次重大技术架构升级，包括自研直播架构（从10到30）、跨端技术（KMP落地与AI融合）等。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/DQKezXUA9T4IaxwLDTUxPw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "字节跳动",
+        "event_date": "2026-03-11",
+        "dimension": "人才发展",
+        "summary": "字节跳动宣布提供7000个实习转正名额，并将AI赛道作为核心布局方向。",
+        "detail": "【动态】字节跳动放大招！7000 个实习转正名额来袭，AI 赛道成核心布局",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/Uqjvreg3S6ucynrmP9WeLA",
+        "source_account": "HR COFFEE社群",
+        "source_title": "【动态】字节跳动放大招！7000 个实习转正名额来袭，AI 赛道成核心布局",
+        "excerpts": [
+          "字节跳动正式启动史上规模最大的 ByteIntern 实习生招聘项目，面向 2027 届毕业生放出超 7000 个实习岗位，且整体转正率超 50%。",
+          "此次招聘的岗位布局极具针对性，核心向研发、产品与 AI 领域倾斜。",
+          "业内人士分析，这是字节跳动为豆包大模型等核心 AI 业务储备优质人才的关键动作，在 AI 赛道竞争日趋白热化的当下，提前锁定青年人才成为企业抢占发展主动权的重要策略。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "HR COFFEE社群"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/Uqjvreg3S6ucynrmP9WeLA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "携程",
+        "event_date": "2026-03-10",
+        "dimension": "企业文化",
+        "summary": "携程评估远程办公政策",
+        "detail": "携程公司正在评估远程办公政策，这是其企业文化和工作模式方面的一次重要审视。评估内容可能涉及远程办公的适用范围、管理规定以及对工作效率的影响。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/VZSLiXKmrN0ltVgMDJ4IZw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：飞猪P9刘洪敏离职；携程评估远程办公；网易公积金上调；百度电商封闭开发；快手张富峥新动向；蚂蚁拔河；滴滴架构调整",
+        "excerpts": [
+          "携程上周罕见向员工发起家庭友好问卷，本次是评估两项全新的员工福利，包括 1远程办公每年20天 2无薪假期每年40天（也可选择每周1天等）。",
+          "值得注意的是，本次远程办公的名称是work from anywhere，不仅局限于居家（从字面上看甚至可以在旅行地点办公），而携程本来就是业内少有的有居家办公大厂，不排除后续会落地更多大招。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/VZSLiXKmrN0ltVgMDJ4IZw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "飞猪",
+        "event_date": "2026-03-10",
+        "dimension": "人事变动",
+        "summary": "飞猪P9刘洪敏离职",
+        "detail": "飞猪公司发生人事变动，P9级别的员工刘洪敏已离职。P9是该公司内部的高级职级，此次变动属于关键岗位人员流动。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/VZSLiXKmrN0ltVgMDJ4IZw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：飞猪P9刘洪敏离职；携程评估远程办公；网易公积金上调；百度电商封闭开发；快手张富峥新动向；蚂蚁拔河；滴滴架构调整",
+        "excerpts": [
+          "飞猪AI问一问产品负责人刘洪敏（职级P9）已于年前离职。",
+          "刘洪敏恰好是当时的产品负责人，还是挺厉害的。",
+          "林俊旸实际是P9并不是P10；本科专业是北大的国际关系英语系并不是计算机科学。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/VZSLiXKmrN0ltVgMDJ4IZw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "网易",
+        "event_date": "2026-03-10",
+        "dimension": "薪酬激励",
+        "summary": "网易上调员工公积金",
+        "detail": "网易公司调整了员工福利政策，具体表现为上调了员工的住房公积金缴存比例或基数。这是薪酬激励方面的一项积极举措，旨在提升员工福利待遇。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/VZSLiXKmrN0ltVgMDJ4IZw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：飞猪P9刘洪敏离职；携程评估远程办公；网易公积金上调；百度电商封闭开发；快手张富峥新动向；蚂蚁拔河；滴滴架构调整",
+        "excerpts": [
+          "网易公积金政策调整，上海将从7%提升至12%（新增补充公积金），3月开始，涵盖上海所有部门。考虑到7%公积金是上海主流，因而不少员工本次表示十分意外，也有员工猜测这和：网易工作室近期陆续从杭州搬到上海青浦有关，4月份奇点工作室主体团队也会搬到上海，看来是要在上海发力了。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/VZSLiXKmrN0ltVgMDJ4IZw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "万达商管",
+        "event_date": "2026-03-10",
+        "dimension": "人事变动",
+        "summary": "珠海万达商管任命了公司历史上第一位女性CEO，属于重大高管人事变动。",
+        "detail": "文章标题: 珠海万达商管，迎来史上第一位女CEO！",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/DVkQC-_Xgg3Y2vdKYraECA",
+        "source_account": "涛哥杂谈",
+        "source_title": "珠海万达商管，迎来史上第一位女CEO！",
+        "excerpts": [
+          "原首席运营官许粉正式升任首席执行官。",
+          "全面执掌这家管理513座万达广场、覆盖228座城市、年客流超60亿人次的全球最大商业不动产运营集团。",
+          "从珠海万达商管COO到CEO，许粉只用不到半年。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "涛哥杂谈"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/DVkQC-_Xgg3Y2vdKYraECA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "快手",
+        "event_date": "2026-03-10",
+        "dimension": "人事变动",
+        "summary": "快手张富峥有新的工作动向",
+        "detail": "快手公司的员工张富峥出现了新的职业动向。这通常意味着其岗位、职责或所属部门发生了变动，属于公司内部的人事调整。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/VZSLiXKmrN0ltVgMDJ4IZw",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：飞猪P9刘洪敏离职；携程评估远程办公；网易公积金上调；百度电商封闭开发；快手张富峥新动向；蚂蚁拔河；滴滴架构调整",
+        "excerpts": [
+          "前快手语言大模型中心负责人张富峥，已加入北京智源人工智能研究院，负责LLM部分。值得一提的是，前快手技术VP王仲远目前担任智源研究院院长，二人继快手后再次成为同事。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/VZSLiXKmrN0ltVgMDJ4IZw"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "美团",
+        "event_date": "2026-03-08",
+        "dimension": "薪酬激励",
+        "summary": "美团在2026年3月8日前后发放了年终奖，其中L5级别员工获得了较高的奖金，反映了其薪酬激励政策的执行。",
+        "detail": "文章标题: 美团年终奖开奖，L5笑麻了 文章发布时间: 2026-03-08",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/onFedvmcXDeQgvAWea1d0Q",
+        "source_account": "BAT",
+        "source_title": "美团年终奖开奖，L5笑麻了",
+        "excerpts": []
+      },
+      "source_count": 1,
+      "all_sources": [
+        "BAT"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/onFedvmcXDeQgvAWea1d0Q"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "蚂蚁集团",
+        "event_date": "2026-03-03",
+        "dimension": "薪酬激励",
+        "summary": "蚂蚁集团今日开启2025财年年终奖发放，部分员工反馈绩效系数在3.5-3.75之间，对应奖金为6-10个月工资。",
+        "detail": "蚂蚁集团于今日（2026年3月3日）开启2025财年年终奖发放。根据员工反馈，绩效系数普遍在3.5-3.75之间，对应奖金为6-10个月工资。部分高绩效员工（3.75+）可获得超过10个月的年终奖。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：蚂蚁年终开奖；阿里P5晋升新规；字节商业化4月调整；小红书安全大佬离职；美团骑行换帅；京东限制外部AI；多多调薪沟通",
+        "excerpts": [
+          "蚂蚁集团年终开奖，整体和去年基本持平。",
+          "BU层面向阿福、碰一下等创新业务倾斜；个人层面则是向高绩效倾斜。",
+          "绩效375：6-7个月起步，拿9-10个月及以上的也大有人在。",
+          "绩效35+：4-5个月起步，拿6个月的也有。",
+          "绩效35：25-3个月起步，双0比较普遍（0涨薪、0期权）。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "阿里巴巴",
+        "event_date": "2026-03-03",
+        "dimension": "人才发展",
+        "summary": "阿里巴巴发布P5职级晋升新规，要求晋升答辩前需完成至少2个跨团队项目，且代码贡献量需达到团队前30%。",
+        "detail": "阿里巴巴发布了针对P5职级（初级工程师）的晋升新规。新规要求员工在申请晋升答辩前，必须完成至少2个跨团队合作项目。同时，其个人代码贡献量需要达到所在团队的前30%，以证明其技术产出和影响力。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：蚂蚁年终开奖；阿里P5晋升新规；字节商业化4月调整；小红书安全大佬离职；美团骑行换帅；京东限制外部AI；多多调薪沟通",
+        "excerpts": [
+          "1阿里集团晋升规则调整，P5升P6变成每年两次提名了，3月一次9月一次，并且只需要绩效35+就可以提名，应届生迎来晋升快车道（控股集团指安全部、采购、法务、行政等等）"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "小红书",
+        "event_date": "2026-03-03",
+        "dimension": "人事变动",
+        "summary": "小红书安全部门负责人（安全大佬）已确认离职，具体离职时间和去向暂未公开。",
+        "detail": "小红书安全部门的核心负责人（文中称为“安全大佬”）已确认离职。目前，公司内部尚未公布其具体的离职时间以及未来的职业去向，该变动可能对小红书的安全战略和团队管理产生影响。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：蚂蚁年终开奖；阿里P5晋升新规；字节商业化4月调整；小红书安全大佬离职；美团骑行换帅；京东限制外部AI；多多调薪沟通",
+        "excerpts": [
+          "小红书安全部负责人wuhaofeng已于上周离职，职级L2（对标P9-P10）。",
+          "wuhaofeng此前在paypal、蚂蚁、TT等任职。",
+          "离职后接任者暂未公布，目前是由副总裁fd直接管。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "美团",
+        "event_date": "2026-03-03",
+        "dimension": "人事变动",
+        "summary": "美团骑行事业部负责人发生变动，原负责人调离，新任负责人已就位。",
+        "detail": "美团旗下骑行事业部近期完成换帅，原事业部负责人已调离该岗位。新任负责人已经就位，负责美团单车、电单车等骑行相关业务的整体运营与发展战略。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：蚂蚁年终开奖；阿里P5晋升新规；字节商业化4月调整；小红书安全大佬离职；美团骑行换帅；京东限制外部AI；多多调薪沟通",
+        "excerpts": [
+          "美团骑行换帅，现骑行公共事务的老大路海空，升任骑行事业部老大，接班张晶。据内部同学分享，路海空此前在华为职级就很高，在美团的3年内部评价也很好，尤其24、25年（电）单车的落车成绩，比其他家高很多，内部有目共睹。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "京东",
+        "event_date": "2026-03-03",
+        "dimension": "企业文化",
+        "summary": "京东发布内部规定，限制员工在工作场景中使用外部AI工具，要求使用经公司批准的内部或指定AI产品。",
+        "detail": "京东发布了针对全体员工的规定，明确限制在工作场景中使用未经批准的外部AI工具（如ChatGPT等）。该规定要求员工在处理公司业务和数据时，必须使用经过公司安全评估和批准的内部AI产品或指定合作伙伴的产品，以保障数据安全。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：蚂蚁年终开奖；阿里P5晋升新规；字节商业化4月调整；小红书安全大佬离职；美团骑行换帅；京东限制外部AI；多多调薪沟通",
+        "excerpts": [
+          "京东将限制员工使用外部AI，不限于豆包、千问、可灵、Kimi、ChatGPT等主流应用，而主推的替代品则是公司自研的joydesk。",
+          "本周将从HR、风控等部门开始灰度，逐步扩量到业务部门，以及零售物流等。",
+          "原百度ACG技术委员会主席孙珂（职级T10），已于近日入职京东零售大模型部门。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "拼多多",
+        "event_date": "2026-03-03",
+        "dimension": "薪酬激励",
+        "summary": "拼多多（多多）已启动年度调薪沟通流程，具体调薪幅度将根据个人绩效和部门预算确定。",
+        "detail": "拼多多（文中简称“多多”）已经启动了年度薪酬调整的沟通流程。本次调薪将依据员工的个人年度绩效表现以及所在部门的整体预算情况进行综合评定，最终调薪幅度将通过一对一沟通的方式告知员工。",
+        "confidence": 85,
+        "source_url": "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA",
+        "source_account": "大厂日爆",
+        "source_title": "今日大厂员工事：蚂蚁年终开奖；阿里P5晋升新规；字节商业化4月调整；小红书安全大佬离职；美团骑行换帅；京东限制外部AI；多多调薪沟通",
+        "excerpts": [
+          "多多上周开始re了，涉及主站、海外的非技术同学（产品、运营等），这次的沟通比往年要早，技术还没开始。"
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "大厂日爆"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/XvpxhidNAB8EW1xuMXCBSA"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "",
+        "event_date": "2026-03-02",
+        "dimension": "人事变动",
+        "summary": "迪士尼招聘“未来劳动力”副总裁，年薪200万，咨询背景优先。",
+        "detail": "文章标题: 迪士尼招聘“未来劳动力”副总裁：年薪200万，咨询背景优先",
+        "confidence": 95,
+        "source_url": "https://mp.weixin.qq.com/s/pGUw0EivO63YZkZuXXOnww",
+        "source_account": "AI组织进化论",
+        "source_title": "迪士尼招聘“未来劳动力”副总裁：年薪200万，咨询背景优先",
+        "excerpts": []
+      },
+      "source_count": 1,
+      "all_sources": [
+        "AI组织进化论"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/pGUw0EivO63YZkZuXXOnww"
+      ]
+    },
+    {
+      "canonical": {
+        "company": "理想汽车",
+        "event_date": "2026-03-01",
+        "dimension": "企业文化",
+        "summary": "理想汽车在2026年3月1日宣布，这是其10年内第6次修改公司价值观，并同时调整了多年未变的公司使命。",
+        "detail": "文章标题: 10年第6次！理想汽车又又又又改价值观了，同时还调整了多年未变的使命 文章发布时间: 2026-03-01",
+        "confidence": 90,
+        "source_url": "https://mp.weixin.qq.com/s/HIaH9z17WeXqmYqQpu6Qcg",
+        "source_account": "AI组织进化论",
+        "source_title": "10年第6次！理想汽车又又又又改价值观了，同时还调整了多年未变的使命",
+        "excerpts": [
+          "理想刚刚把价值观调整为：用户、能力、心力",
+          "当时的核心逻辑是：用户 方向牵引能力 解决问题心力 组织韧性",
+          "而这次更新后，虽然核心句没有变——超越用户的需求，创造让我们自豪的产品和服务。，但其内在的行为准则全变：从内高度导向外部：解决客户的关键问题创造高频的用户价值改善客户的成本效率",
+          "在2024年3月份，当时三条价值观行为准则还被应用在了理想mega产品的反思上，明确强调三条行为准则，认识错误及时调整。",
+          "理想采取的是一种动态文化模式——文化表达随战略..."
+        ]
+      },
+      "source_count": 1,
+      "all_sources": [
+        "AI组织进化论"
+      ],
+      "all_urls": [
+        "https://mp.weixin.qq.com/s/HIaH9z17WeXqmYqQpu6Qcg"
+      ]
+    }
+  ]
+}

@@ -83,7 +83,14 @@
               </span>
             </div>
             <h3 class="text-sm font-semibold text-gray-800 mb-1">{{ entry.canonical?.summary }}</h3>
-            <p v-if="entry.canonical?.detail" class="text-xs text-gray-500 line-clamp-2">{{ entry.canonical.detail }}</p>
+            <p v-if="entry.canonical?.detail" class="text-xs text-gray-700 font-semibold line-clamp-2">{{ entry.canonical.detail }}</p>
+            <div v-if="entry.canonical?.excerpts?.length" class="mt-2 bg-gray-50 border-l-3 border-blue-400 rounded-r pl-3 pr-2 py-2">
+              <div
+                v-for="(exc, ei) in entry.canonical.excerpts"
+                :key="ei"
+                class="text-xs text-gray-600 leading-relaxed whitespace-pre-line"
+              >{{ exc }}</div>
+            </div>
             <div class="flex items-center gap-3 mt-2 text-xs text-gray-400">
               <span v-if="entry.canonical?.company">🏢 {{ entry.canonical.company }}</span>
               <span>📰 {{ entry.canonical?.source_account }}</span>
@@ -123,6 +130,7 @@ const activeDimension = ref('全部')
 const dimColors = {
   '薪酬激励': '#e74c3c',
   '组织架构': '#3498db',
+  '人事变动': '#9b59b6',
   '人才发展': '#2ecc71',
   '企业文化': '#f59e0b',
   '未分类': '#95a5a6',
