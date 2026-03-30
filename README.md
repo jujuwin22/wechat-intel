@@ -106,5 +106,47 @@ wechat-intel/
 │   └── output/              # Pipeline 输出
 ├── docker-compose.yml       # 微信 exporter 容器
 ├── specs/                   # 需求 & 设计文档
+├── skills/                  # Claude Code Skill
+│   └── wechat-intel-viewer/ # 市场情报查看器 Skill
 └── .env.example             # 环境变量模板
 ```
+
+---
+
+## 🤖 AI 助手快速接入
+
+无需启动 Web 服务，直接在 Claude Code / CodeBuddy / Cursor 中查询已采集的 HR 情报。
+
+### 一键安装
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/jujuwin22/wechat-intel/main/install.sh | bash
+```
+
+支持自动检测：Claude Code、CodeBuddy、Cursor、Windsurf
+
+### 使用方法
+
+安装完成后，直接在 AI 对话中说：
+
+| 功能 | 示例指令 |
+|------|----------|
+| **交互式趋势分析** ⭐ | `"生成3月动态"` → AI 让你勾选维度 → 自动生成趋势报告 |
+| **快速查询** | `"查一下字节跳动最近的HR动态"` |
+| **维度筛选** | `"3月有哪些薪酬激励的新闻"` |
+| **导出报告** | `"导出HTML报告"`、`"生成可视化展示"` |
+
+### 功能特性
+
+- **交互式趋势生成**：先展示维度分布，让用户勾选感兴趣的维度，AI 自动生成趋势洞察
+- **多维度筛选**：薪酬激励 / 人事变动 / 组织架构 / 人才发展 / 企业文化
+- **HTML 可视化**：生成交互式卡片页面，支持维度筛选、置信度展示、原文链接
+- **开箱即用**：零配置，安装后直接对话使用
+
+### 数据来源
+
+已采集的数据存放在本仓库 `data/output/` 目录：
+- `{YYYY}年{M}月_digest.json` — 情报速递（事件列表）
+- `{YYYY}年{M}月_trend_report.json` — 趋势分析报告
+
+数据每月更新，覆盖互联网/地产/金融等行业头部企业 HR 动态。

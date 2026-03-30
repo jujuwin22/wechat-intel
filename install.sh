@@ -32,10 +32,28 @@ INSTALLED=0
 CLAUDE_SKILL_DIR="$HOME/.claude/skills/wechat-intel-viewer"
 if [ -d "$HOME/.claude" ]; then
     echo "[Claude Code] 检测到 Claude Code"
+    echo "  正在下载完整 skill..."
+
+    # 创建 skill 目录
+    mkdir -p "$CLAUDE_SKILL_DIR/scripts"
+    mkdir -p "$CLAUDE_SKILL_DIR/templates"
+
+    # 下载 SKILL.md
+    curl -fsSL "${RAW_BASE}/skills/wechat-intel-viewer/SKILL.md" > "$CLAUDE_SKILL_DIR/SKILL.md" 2>/dev/null
+
+    # 下载脚本
+    curl -fsSL "${RAW_BASE}/skills/wechat-intel-viewer/scripts/generate_html.py" > "$CLAUDE_SKILL_DIR/scripts/generate_html.py" 2>/dev/null
+    chmod +x "$CLAUDE_SKILL_DIR/scripts/generate_html.py"
+
+    # 下载模板
+    curl -fsSL "${RAW_BASE}/skills/wechat-intel-viewer/templates/digest-report.md" > "$CLAUDE_SKILL_DIR/templates/digest-report.md" 2>/dev/null
+    curl -fsSL "${RAW_BASE}/skills/wechat-intel-viewer/templates/trend-report.md" > "$CLAUDE_SKILL_DIR/templates/trend-report.md" 2>/dev/null
+
     if [ -f "$CLAUDE_SKILL_DIR/SKILL.md" ]; then
-        echo "  已安装，跳过"
+        echo "  ✅ 已安装到: $CLAUDE_SKILL_DIR"
+        echo "     版本: $(grep 'version:' $CLAUDE_SKILL_DIR/SKILL.md | head -1 | cut -d':' -f2 | tr -d ' ')"
     else
-        echo "  注意: Claude Code 的 skill 需要专用格式，请联系 shihang 获取完整 skill 目录"
+        echo "  ❌ 安装失败，请检查网络连接"
     fi
     INSTALLED=$((INSTALLED + 1))
     echo ""

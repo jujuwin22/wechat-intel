@@ -15,10 +15,10 @@ description: |
   - 采集操作（应触发 hr-intel-collect）
   - HR 对标研究（应触发 hr-org-benchmark）
   - 通用 HR 问题（如"怎么写 JD"）
+allowed-tools: [Read, Write, Bash, WebFetch]
 version: 1.3.0
 author: shihang
 ---
-
 
 # HR 市场情报查看器
 
